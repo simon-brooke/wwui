@@ -1,0 +1,24 @@
+Socrates is a man.
+
+Brutus killed Caesar.
+Brutus used the dagger.
+The dagger caused the wound.
+Caesar died from the wound.
+
+Brutus killed Caesar in the Forum on the Ides of March.
+Brutus used the Dagger in the Forum on the Ides of March.
+The Dagger caused the Wound in the Forum on the Ides of March.
+Caesar doed of the wound in the Forum on the Ides of March.
+
+Calpurnia married Caesar.
+Calpurnia is married to Caesar.
+
+Calpurnia said "Brutus killed Caesar in the Forum on the Ides of March".
+Calpurnia said proposition one.
+
+Drusilla heard Calpurnia say "Brutus killed Caesar in the Forum on the Ides of March".
+Drusilla heard "Brutus killed Caesar in the Forum on the Ides of March".
+Drusilla heard proposition one.
+
+Dirck, Joris and I carried the good news from Ghent to Aix.
+
