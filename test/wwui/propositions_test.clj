@@ -2,11 +2,7 @@
   (:require [clojure.test :refer :all]
             [wwui.propositions :refer :all]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
-
-(deftest "RDP tests"
+(deftest reparser-tests
   (testing "Simplest constructs"
     (is (= (recursive-descent-parser [] grammar :noun) nil))
     (is

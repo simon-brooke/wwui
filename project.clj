@@ -9,4 +9,8 @@
                  [wildwood "0.1.0-SNAPSHOT"]]
   :main ^:skip-aot wwui.core
   :target-path "target/%s"
+  :plugins [[lein-cloverage "1.1.1"]
+            [lein-codox "0.10.7"]
+            [lein-cucumber "1.0.2"]
+            [lein-gorilla "0.4.0"]]
   :profiles {:uberjar {:aot :all}})
