@@ -35,7 +35,6 @@
                  ["DT" :adjectives :noun]]
    :noun-phrases [[:noun-phrase]
                  [:noun-phrase "CC" :noun-phrases]
-                 [:noun-phrase "IN" :noun-phrases]
                  [:noun-phrase "," :noun-phrases]]
    :adjective [["JJ"]["JJR"]["JJS"]]
    :adjectives [[:adjective]
@@ -148,6 +147,30 @@
                " returned " (s/trim (with-out-str (pprint r))))
     r))
 
+(defn identify
+  [parse-tree knowledge-accessor]
+  ;; TODO: we don't yet have a working knowledge accessor. When we do,
+  ;; construct a query from the contents of this parse-tree, and pass it
+  ;; to the knowledge accessor in the hope of finding a true name.
+  parse-tree)
+
+(defn normalise-proposition
+  [parse-tree ka]
+  (when
+    (= (nth parse-tree 1) :proposition)
+    (reduce
+      merge
+      {}
+      (map
+        #(assoc {} (nth % 1) (identify (first %) ka))
+        (first parse-tree)))))
+
+;; (defn normalise
+;;   [parse-tree ka]
+;;   (if
+;;     (and (coll? parse-tree) (keyword? (nth parse-tree 1)))
+;;     (case (nth parse-tree 1)
+
 (defn propositions
   "Given a `tagged-sentence`, return a list of propositions detected in that
   sentence; if `knowledge-accessor` is passed, try to resolve names and noun
@@ -157,16 +180,13 @@
   objects, then that is essentially one proposition for each unique
   combination. This is not yet implemented!"
   ([tagged-sentence]
-   (reduce
-     merge
-     {}
-     (map
-       #(assoc {} (nth % 1) (first %))
-       (first (first (first (reparse tagged-sentence grammar :propositions)))))))
+   (propositions tagged-sentence nil))
   ([tagged-sentence ;; ^wildwood.knowledge-accessor.Accessor
     knowledge-accessor]
    ;; TODO: doesn't work yet.
-   nil))
+   (map
+     #(normalise-proposition % knowledge-accessor)
+     (first (first (reparse tagged-sentence grammar :propositions))))))
 
 (defn propositions-from-file
   [file-path]
