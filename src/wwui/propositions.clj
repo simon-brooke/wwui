@@ -1,8 +1,9 @@
 (ns wwui.propositions
   (:require [clojure.pprint :refer [pprint]]
+            [clojure.string :as s]
             [opennlp.nlp :as nlp]
             [opennlp.treebank :as tb]
-            [taoensso.timbre :as l :refer [info error spy]]
+            [taoensso.timbre :as log :refer [debug error info spy]]
             [wildwood.knowledge-accessor :refer [Accessor]]))
 
 ;; Position tags used by OpenNLP for English are documented here:
@@ -23,15 +24,19 @@
   {:contextual-reference [["PRP"]] ;; the documentation says PRP is 'peronal pronoun',
    ;; but it seems to be all pronouns.
    :noun [["NN"]["NNS"]["NNP"]["NNPS"]]
+   :full-name [["NNP"]
+               ["NNP" :full-name]] ;; an unpunctuated sequence of proper nouns
+                                   ;; probably represents a full name
    :noun-phrase [[:contextual-reference]
                  [:noun]
+                 [:full-name]
                  ["DT" :noun]
                  [:adjectives :noun]
                  ["DT" :adjectives :noun]]
-;;    :noun-phrases [[:noun-phrase]
-;;                  [:noun-phrase "CC" :noun-phrases]
-;;                  [:noun-phrase "IN" :noun-phrases]
-;;                  [:noun-phrase "," :noun-phrases]]
+   :noun-phrases [[:noun-phrase]
+                 [:noun-phrase "CC" :noun-phrases]
+                 [:noun-phrase "IN" :noun-phrases]
+                 [:noun-phrase "," :noun-phrases]]
    :adjective [["JJ"]["JJR"]["JJS"]]
    :adjectives [[:adjective]
                 [:adjective :adjectives]
@@ -46,16 +51,16 @@
                  [:adverbs :verb]
                  [:verb :adverb :verb]
                  [:verb :adverbs]]
-   :locator [["IN" :noun-phrase]]
+   :locator [["IN" :noun-phrases]]
    :locators [[:locator]
-              [:locators :locator]
-              [:locators "," :locator]]
-   :subject [[:noun-phrase]]
-   :object [[:noun-phrase]]
-   :proposition [[:subject :verb :object]
-                 [:locator "," :subject :verb :object]
-                 [:subject "," :locator "," :verb :object]
-                 [:subject :verb-phrase :object :locator]]
+              [:locator :locators]
+              [:locator "," :locators]]
+   :subject [[:noun-phrases]]
+   :object [[:noun-phrases]]
+   :proposition [[:subject :verb-phrase :object]
+                 [:locators "," :subject :verb-phrase :object]
+                 [:subject "," :locators "," :verb-phrase :object]
+                 [:subject :verb-phrase :object :locators]]
    :propositions [[:proposition]
                   [:proposition "CC" :propositions]]})
 
@@ -70,21 +75,18 @@
   no match;
   2. the tail of the sentence when the parts comprising the phrase are removed."
   [tagged-sentence grammar goal]
-  (l/info "Seeking " goal " in " (with-out-str (pprint tagged-sentence)))
   (if (keyword? goal)
     (when (not (empty? tagged-sentence))
       (when-let [result (first
-                     (sort
-                       #(> (count %1) (count %2))
-                       (map
-                         #(reparse tagged-sentence grammar %)
-                         (goal grammar))))]
-           (cons (cons (first result) (list goal)) (rest result))))
+                          (sort
+                            #(< (count %1) (count %2))
+                            (remove
+                              empty?
+                              (map
+                                #(reparse tagged-sentence grammar %)
+                                (goal grammar)))))]
+        (cons (cons (first result) (list goal)) (rest result))))
     (throw (Exception. (str "Non-keyword passed to rdp-seek: `" goal "` (type " (or (type goal) "nil") ")")))))
-
-;; (rdp-seek [["The" "DT"] ["Forum" "NNP"]] grammar :noun-phrase)
-;; (reparse [["The" "DT"] ["Forum" "NNP"]] grammar ["DT" "NNP"])
-;; (:noun-phrase grammar)
 
 (defmacro tag
   "The tag, on a `tagged-token`, is just the second element. Written as a macro
@@ -94,7 +96,7 @@
 
 (defmacro coll-or-nil?
   [o]
-  "For fuck's sake, nil isn't a collection? What planet are these people on?"
+  "For fuck's sake, `nil` isn't a collection? What planet are these people on?"
   `(or (nil? ~o) (coll? ~o)))
 
 (defn rdp-extend
@@ -105,7 +107,6 @@
   1. the first matching phrase for the goal, or `nil` if no match;
   2. the tail of the sentence when the parts comprising the phrase are removed."
   [tagged-sentence grammar goal]
-  (l/info "Extending " goal " in " (with-out-str (pprint tagged-sentence)))
   (cond
     (not (coll-or-nil? goal))
     (throw (Exception. (str "Non-collection passed to rdp-extend: `" goal "` (type " (or (type goal) "nil") ")")))
@@ -115,30 +116,13 @@
     (let [[tt & st] tagged-sentence
           [target & gt] goal]
       (cond
-        (= target (tag tt))
-        (when-let [[dh & dt] (rdp-extend st grammar gt)]
-          (cons (cons tt dh) dt))
         (keyword? target)
-        (when-let [[ph & pt]   (rdp-seek tagged-sentence grammar target)] ;; it's this branch which is wrong. Getting it right, however, is not easy
-          (let [[dh & dt] (rdp-extend st grammar pt)]
-            (cons (cons (cons ph dh) (list target)) dt)))))))
-
-;; As of 23:00 on 20160427, I'm getting
-;; (rdp-seek [["the" "DT"] ["forum" "NN"]] grammar :noun-phrase)
-;; => (((["the" "DT"] (((["forum" "NN"]) :noun)) :noun) :noun-phrase))
-;; it's wrong, but it's interestingly and probably tractably wrong.
-
-;; Seeking a keyword target whose definition in the grammar comprises only
-;; string targets seems to produce the right result...
-;; but seeking a keyword target whose definition expands to further keyword
-;; targets (e.g. :noun-phrase being defined in terms of :noun) blows up.
-
-
-
-;; (rdp-extend [["The" "DT"] ["Forum" "NNP"]] grammar [])
-;; (rdp-extend [["The" "DT"] ["Forum" "NNP"]] grammar ["DT"])
-;; (rdp-extend '(["The" "DT"] ["Forum" "NNP"]) grammar ["DT" "NNP"])
-;; (rdp-extend '(["The" "DT"] ["Forum" "NNP"]) grammar ["DT" "FOO"])
+        (when-let [[h & t](reparse tagged-sentence grammar target)]
+          (when-let [[dh & dt] (reparse t grammar gt)]
+            (cons (cons h dh) dt)))
+        (= target (tag tt))
+          (when-let [[dh & dt] (reparse st grammar gt)]
+        (cons (cons tt dh) dt))))))
 
 (defn reparse
   "Reparse this `tagged-sentence` using this grammar to seek this `goal`.
@@ -151,24 +135,34 @@
 
   This function is called `reparse` because:
   1. it is designed to parse sentences which have already been parsed by
-    OpenNLP: it will not work on raw sentences;
+  OpenNLP: it will not work on raw sentences;
   2. it is a recursive descent parser."
   [tagged-sentence grammar goal]
-  (l/info "Choosing strategy for " goal " in " (with-out-str (pprint tagged-sentence)))
-  (cond
-    ;;      (empty? tagged-sentence)
-    ;;      nil
-    (keyword? goal)
-    (rdp-seek tagged-sentence grammar goal)
-    (coll-or-nil? goal)
-    (rdp-extend tagged-sentence grammar goal)))
+  (log/debug "=> Choosing strategy for "
+             goal " in " (with-out-str (pprint tagged-sentence)))
+  (let [r (cond
+            (keyword? goal) (rdp-seek tagged-sentence grammar goal)
+            (coll-or-nil? goal) (rdp-extend tagged-sentence grammar goal))]
+    (log/debug "<= " goal " in "
+               (s/trim (with-out-str (pprint tagged-sentence)))
+               " returned " (s/trim (with-out-str (pprint r))))
+    r))
 
 (defn propositions
   "Given a `tagged-sentence`, return a list of propositions detected in that
   sentence; if `knowledge-accessor` is passed, try to resolve names and noun
-  phrases to entities known to that knowledge accessor."
+  phrases to entities known to that knowledge accessor.
+
+  TODO: Note that if `:subject`, `:object` or `:locator` resolves to multiple
+  objects, then that is essentially one proposition for each unique
+  combination. This is not yet implemented!"
   ([tagged-sentence]
-   (reparse tagged-sentence grammar :propositions))
+   (reduce
+     merge
+     {}
+     (map
+       #(assoc {} (nth % 1) (first %))
+       (first (first (first (reparse tagged-sentence grammar :propositions)))))))
   ([tagged-sentence ;; ^wildwood.knowledge-accessor.Accessor
     knowledge-accessor]
    ;; TODO: doesn't work yet.
@@ -184,32 +178,3 @@
         #(propositions (pos-tag (tokenize %)))
         (get-sentences (slurp file-path))))))
 
-;; (reparse [] grammar :noun)
-;; (rdp-seek (pos-tag (tokenize "Brutus killed Caesar")) grammar :noun)
-;; (coll? ["NPP"])
-;; (reparse (pos-tag (tokenize "killed Caesar")) grammar :verb)
-;; (reparse (pos-tag (tokenize "The Forum")) grammar :noun-phrase)
-;; (reparse (pos-tag (tokenize "The Forum")) grammar ["DT" "NNP"])
-
-;; (reparse [["Forum" "NNP"]] grammar :noun-phrase)
-
-;; (map
-;;   #(reparse (pos-tag (tokenize "Forum")) grammar %)
-;;   (:noun-phrase grammar))
-
-;; (rdp-extend (pos-tag (tokenize "The Forum")) grammar ["DT" "NNP"])
-
-;; (nil nil
-;;      ((["The" "DT"]) ["Forum" "NNP"])
-;;      nil
-;;      ((["The" "DT"]) ["Forum" "NNP"]) nil nil nil)
-
-;; (reparse (pos-tag (tokenize "in the Forum")) grammar :locator)
-
-;; (reparse (pos-tag (tokenize "The Forum")) grammar ["DT" "NNP"])
-
-;; (rdp-extend (pos-tag (tokenize "The Forum")) grammar ["DT" :noun])
-;; (let [deeper (rdp-extend (pos-tag (tokenize "Forum on Sunday")) grammar ["NNP"])]
-;;   (cons (cons ["The" "DT"] (first deeper)) (rest deeper)))
-;; (let [deeper (rdp-extend (pos-tag (tokenize "The Forum on Sunday")) grammar ["DT" "NNP"])]
-;;   deeper)
