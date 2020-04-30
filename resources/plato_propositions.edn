@@ -1,0 +1,2834 @@
+(
+  ;; "The Republic is the centre around
+  ;; which the other Dialogues may be grouped; here philosophy reaches the
+  ;; highest point (cp, especially in Books V, VI, VII) to which ancient
+  ;; thinkers ever attained" (line 60). Poor.
+  {:subject
+  (((((["The" "DT"] ((["Republic" "NNP"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["centre" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+;; "He was the greatest
+;; metaphysical genius whom the world has seen; and in him, more than in
+;; any other ancient thinker, the germs of future knowledge are contained.
+  ;; (line 67). Poor.
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["was" "VBD"]) :verb)),
+  :object
+  (((((["the" "DT"]
+       ((((["greatest" "JJS"]) :adjective)
+         ((((["metaphysical" "JJ"]) :adjective)) :adjectives))
+        :adjectives)
+       ((["genius" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases))}
+  ;; "He is the father of idealism in philosophy, in politics, in literature." (line 143). Good!
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["father" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["idealism" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+    :locator)
+   ((((["in" "IN"]
+       ((((((["philosophy" "NN"]) :noun)) :noun-phrase))
+        :noun-phrases))
+      :locator)
+     ["," ","]
+     ((((["in" "IN"]
+         ((((((["politics" "NNS"]) :noun)) :noun-phrase))
+          :noun-phrases))
+        :locator)
+       ["," ","]
+       ((((["in" "IN"]
+           ((((((["literature" "NN"]) :noun)) :noun-phrase))
+            :noun-phrases))
+          :locator))
+        :locators))
+      :locators))
+    :locators))}
+;; "They do not perceive the
+;; want of connexion in their own writings, or the gaps in their systems
+;; which are visible enough to those who come after them." (line 237)
+ {:subject
+  (((((((["They" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((["do" "VBP"]) :verb)
+   ((["not" "RB"]) :adverb)
+   ((["perceive" "VB"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["want" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["connexion" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+    :locator))}
+;; "It is not prose but poetry, at least a great part of it, and ought not
+;; to be judged by the rules of logic or the probabilities of history." (line 325)
+ {:subject
+  (((((((["It" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((["is" "VBZ"]) :verb) ((((["not" "RB"]) :adverb)) :adverbs)),
+  :object
+  (((((((["prose" "NN"]) :noun)) :noun-phrase)
+     ["but" "CC"]
+     ((((((["poetry" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+    :noun-phrases))}
+;; "We have no need therefore
+;; to discuss whether a State such as Plato has conceived is practicable or
+;; not, or whether the outward form or the inward life came first into the
+;; mind of the writer." (line 328) Poor.
+ {:subject
+  (((((((["We" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["have" "VBP"]) :verb)),
+  :object
+  (((((["no" "DT"] ((["need" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+;; "He is the pattern of an old man who has almost
+;; done with life, and is at peace with himself and with all mankind. He
+;; feels that he is drawing nearer to the world below, and seems to linger
+;; around the memory of the past." (line 376)
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["pattern" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((["an" "DT"]
+         ((((["old" "JJ"]) :adjective)) :adjectives)
+         ((["man" "NN"]) :noun))
+        :noun-phrase))
+      :noun-phrases))
+    :locator))}
+;; Glaucon is the impetuous youth who can 'just never have
+;; enough of fechting' (cp. the character of him in Xen. Mem. iii. 6);
+;; the man of pleasure who is acquainted with the mysteries of love; the
+;; 'juvenis qui gaudet canibus,' and who improves the breed of animals; the
+;; lover of art and music who has all the experiences of youthful life. He
+;; is full of quickness and penetration, piercing easily below the clumsy
+;; platitudes of Thrasymachus to the real difficulty; he turns out to the
+;; light the seamy side of human life, and yet does not lose faith in the
+;; just and true. (line 464) Extraordinarily complex sentence, we got something!
+ {:subject
+  (((((((["Glaucon" "NNP"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"]
+       ((((["impetuous" "JJ"]) :adjective)) :adjectives)
+       ((["youth" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases))}
+;; It is Glaucon who seizes what may be termed the ludicrous
+;; relation of the philosopher to the world, to whom a state of simplicity
+;; is 'a city of pigs,' who is always prepared with a jest when the
+;; argument offers him an opportunity, and who is ever ready to second
+;; the humour of Socrates and to appreciate the ridiculous, whether in
+;; the connoisseurs of music, or in the lovers of theatricals, or in the
+;; fantastic behaviour of the citizens of democracy.
+ {:subject
+  (((((((["It" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((((["Glaucon" "NNP"]) :noun)) :noun-phrase)) :noun-phrases))}
+;; "He is a soldier, and, like
+;; Adeimantus, has been distinguished at the battle of Megara (anno
+;; 456?)." (line 480). Poor.
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["a" "DT"] ((["soldier" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+;; Adeimantus pursues the
+;; argument further (line 484); Meh.
+ {:subject
+  (((((((["Adeimantus" "NNP"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :verb-phrase (((["pursues" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["argument" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+;; It is Adeimantus again
+;; who volunteers the criticism of common sense on the Socratic method of
+;; argument, and who refuses to let Socrates pass lightly over the question
+;; of women and children.  (line 497). Very poor.
+ {:subject
+  (((((((["It" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((((["Adeimantus" "NNP"]) :noun)) :noun-phrase)) :noun-phrases))}
+;; It is Adeimantus who is the respondent in the
+;; more argumentative, as Glaucon in the lighter and more imaginative
+;; portions of the Dialogue. (line 500). Very poor.
+ {:subject
+  (((((((["It" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((((["Adeimantus" "NNP"]) :noun)) :noun-phrase)) :noun-phrases))}
+ {:subject
+  (((((((["Socrates" "NNP"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :verb-phrase (((["asks" "VBZ"]) :verb)),
+  :object
+  (((((((["him" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((["Every" "DT"] ((["art" "NN"]) :noun)) :noun-phrase)
+     ["or" "CC"]
+     ((((((["science" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+    :noun-phrases)),
+  :verb-phrase (((["has" "VBZ"]) :verb)),
+  :object
+  (((((["an" "DT"] ((["interest" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+;; They only saw the
+;; points of agreement in them and not the points of difference.
+  ;; (line 877). Better!
+ {:subject
+  (((((((["They" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((((["only" "RB"]) :adverb)) :adverbs) ((["saw" "VBD"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["points" "NNS"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["agreement" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+    :locator)
+   ((((["in" "IN"]
+       ((((((["them" "PRP"]) :contextual-reference)) :noun-phrase))
+        :noun-phrases))
+      :locator))
+    :locators))}
+
+ {:subject
+  (((((((["Socrates" "NNP"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :verb-phrase (((["reassumes" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["character" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((((["then" "RB"]) :adverb)) :adverbs) ((["asks" "VBZ"]) :verb)),
+  :object
+  (((((((["Socrates" "NNP"]) :noun)) :noun-phrase)) :noun-phrases))}
+
+  ;; "Appearance is master of truth and lord of
+  ;; happiness." (line 1019). Good! Whole sentence parsed, and the parse
+  ;; makes sense.
+ {:subject
+  (((((((["Appearance" "NNP"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((((["master" "NN"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["truth" "NN"]) :noun)) :noun-phrase)
+       ["and" "CC"]
+       ((((((["lord" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+      :noun-phrases))
+    :locator)
+   ((((["of" "IN"]
+       ((((((["happiness" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+      :locator))
+    :locators))}
+;;   All such theories have a kind of plausibility from their
+;; partial agreement with experience. (line 1066)
+ {:subject
+  (((((["All" "DT"]
+       ((((["such" "JJ"]) :adjective)) :adjectives)
+       ((["theories" "NNS"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["have" "VBP"]) :verb)),
+  :object
+  (((((["a" "DT"] ((["kind" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["plausibility" "NN"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator))}
+
+ {:subject
+  (((((["An" "DT"] ((["ideal" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object (((((((["none" "NN"]) :noun)) :noun-phrase)) :noun-phrases))}
+
+;; Plato does not
+;; give the final solution of philosophical questions for us; nor can he be
+;; judged of by our standard.  (line 1152) Excellent! We need to recognise
+;; that this is negated.
+ {:subject
+  (((((((["Plato" "NNP"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :verb-phrase
+  (((["does" "VBZ"]) :verb)
+   ((["not" "RB"]) :adverb)
+   ((["give" "VB"]) :verb)),
+  :object
+  (((((["the" "DT"]
+       ((((["final" "JJ"]) :adjective)) :adjectives)
+       ((["solution" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((((["philosophical" "JJ"]) :adjective)) :adjectives)
+         ((["questions" "NNS"]) :noun))
+        :noun-phrase))
+      :noun-phrases))
+    :locator)
+   ((((["for" "IN"]
+       ((((((["us" "PRP"]) :contextual-reference)) :noun-phrase))
+        :noun-phrases))
+      :locator))
+    :locators))}
+;; He therefore makes a condition, that having
+;; weak eyes he shall be allowed to read the large letters first and then
+;; go on to the smaller, that is, he must look for justice in the State
+;; first, and will then proceed to the individual.
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((((["therefore" "RB"]) :adverb)) :adverbs)
+   ((["makes" "VBZ"]) :verb)),
+  :object
+  (((((["a" "DT"] ((["condition" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+
+ {:subject
+  (((((((["Music" "NN"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :verb-phrase (((["includes" "VBZ"]) :verb)),
+  :object
+  (((((((["literature" "NN"]) :noun)) :noun-phrase)) :noun-phrases))}
+
+ {:subject
+  (((((((["Reason" "NN"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :verb-phrase (((["teaches" "VBZ"]) :verb)),
+  :object
+  (((((((["us" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases))}
+;; We know also
+;; that changes in the traditions of a country cannot be made in a day; and
+;; are therefore tolerant of many things which science and criticism would
+;; condemn.  1417
+ {:subject
+  (((((((["We" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((["know" "VBP"]) :verb) ((((["also" "RB"]) :adverb)) :adverbs)),
+  :object
+  (((((["that" "DT"] ((["changes" "NNS"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["in" "IN"]
+     ((((["the" "DT"] ((["traditions" "NNS"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator)
+   ((((["of" "IN"]
+       ((((["a" "DT"] ((["country" "NN"]) :noun)) :noun-phrase))
+        :noun-phrases))
+      :locator))
+    :locators))}
+
+ {:subject
+  (((((((["Great" "NNP"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["art" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["interpretation" "NN"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator))}
+;; Socrates is here answering the question which he had
+;; himself raised about the propriety of deceiving a madman; and he is also
+;; contrasting the nature of God and man. (line 1469)
+ {:subject
+  (((((((["Socrates" "NNP"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :verb-phrase
+  (((["is" "VBZ"]) :verb)
+   ((["here" "RB"]) :adverb)
+   ((["answering" "VBG"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["question" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+  ;; True love is the daughter of temperance, and
+  ;; temperance is utterly opposed to the madness of bodily pleasure. (line 1645)
+  ;;
+  ;; However, with a very minor tweek to the parser, I now get this:
+  ;; (((((((((((((((["True" "JJ"]) :adjective)) :adjectives)
+  ;;            ((["love" "NN"]) :noun))
+  ;;           :noun-phrase))
+  ;;         :noun-phrases))
+  ;;       :subject)
+  ;;      ((((["is" "VBZ"]) :verb)) :verb-phrase)
+  ;;      ((((((["the" "DT"] ((["daughter" "NN"]) :noun)) :noun-phrase))
+  ;;         :noun-phrases))
+  ;;       :object)
+  ;;      ((((["of" "IN"]
+  ;;          ((((((["temperance" "NN"]) :noun)) :noun-phrase))
+  ;;           :noun-phrases))
+  ;;         :locator))
+  ;;       :locators))
+  ;;     :proposition)
+  ;;    ["," ","]
+  ;;    ["and" "CC"]
+  ;;    ((((((((((((["temperance" "NN"]) :noun)) :noun-phrase))
+  ;;           :noun-phrases))
+  ;;         :subject)
+  ;;        ((((["is" "VBZ"]) :verb)
+  ;;          ((((["utterly" "RB"]) :adverb)) :adverbs)
+  ;;          ((["opposed" "VBN"]) :verb)
+  ;;          ["to" "TO"])
+  ;;         :verb-phrase)
+  ;;        ((((((["the" "DT"] ((["madness" "NN"]) :noun)) :noun-phrase))
+  ;;           :noun-phrases))
+  ;;         :object)
+  ;;        ((((["of" "IN"]
+  ;;            ((((((((["bodily" "JJ"]) :adjective)) :adjectives)
+  ;;                ((["pleasure" "NN"]) :noun))
+  ;;               :noun-phrase))
+  ;;             :noun-phrases))
+  ;;           :locator))
+  ;;         :locators))
+  ;;       :proposition))
+  ;;     :propositions))
+  ;;   :propositions)
+  ;;  ["." "."])
+
+  {:subject
+  (((((((((["True" "JJ"]) :adjective)) :adjectives)
+       ((["love" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["daughter" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["temperance" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+    :locator))}
+
+ {:subject
+  (((((((["Glaucon" "NNP"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :verb-phrase
+  (((((["then" "RB"]) :adverb)) :adverbs) ((["asks" "VBZ"]) :verb)),
+  :object
+  (((((((["Socrates" "NNP"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :locators
+  (((["whether" "IN"]
+     ((((["the" "DT"]
+         ((((["best" "JJS"]) :adjective)) :adjectives)
+         ((["physicians" "NNS"]) :noun))
+        :noun-phrase)
+       ["and" "CC"]
+       ((((["the" "DT"]
+           ((((["best" "JJS"]) :adjective)) :adjectives)
+           ((["judges" "NNS"]) :noun))
+          :noun-phrase))
+        :noun-phrases))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["Socrates" "NNP"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :verb-phrase (((["draws" "VBZ"]) :verb)),
+  :object
+  (((((["a" "DT"] ((["distinction" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((["any" "DT"] ((["rate" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["let" "VB"]) :verb)),
+  :object
+  (((((((["us" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((["These" "DT"] ((["brothers" "NNS"]) :noun)) :noun-phrase)
+     ["and" "CC"]
+     ((((((["sisters" "NNS"]) :noun)) :noun-phrase)) :noun-phrases))
+    :noun-phrases)),
+  :verb-phrase (((["have" "VBP"]) :verb)),
+  :object
+  (((((((((["different" "JJ"]) :adjective)) :adjectives)
+       ((["natures" "NNS"]) :noun))
+      :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["They" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((["are" "VBP"]) :verb) ((((["not" "RB"]) :adverb)) :adverbs)),
+  :object
+  (((((((["examples" "NNS"]) :noun)) :noun-phrase)) :noun-phrases))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["adapts" "VBZ"]) :verb)),
+  :object
+  (((((((["mythology" "NN"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :locators
+  (((["like" "IN"]
+     ((((["the" "DT"] ((["Homeric" "NNP"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["Mythology" "NNP"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :verb-phrase (((["supplies" "VBZ"]) :verb)),
+  :object
+  (((((["a" "DT"] ((["figure" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["I" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["have" "VBP"]) :verb)),
+  :object
+  (((((["another" "DT"] ((["remark" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["Right" "NNP"]) :noun)) :noun-phrase)
+     ["and" "CC"]
+     ((((((["truth" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+    :noun-phrases)),
+  :verb-phrase (((["are" "VBP"]) :verb)),
+  :object
+  (((((["the" "DT"]
+       ((((["highest" "JJS"]) :adjective)) :adjectives)
+       ((["aims" "NNS"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["government" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["They" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["are" "VBP"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["watchwords" "NNS"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["You" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["know" "VBP"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["way" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["It" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["foundation" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["courage" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["It" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"]
+       ((((["peremptory" "JJ"]) :adjective)
+         ((((["military" "JJ"]) :adjective)) :adjectives))
+        :adjectives)
+       ((["spirit" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((["The" "DT"] ((["words" "NNS"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["'as" "VBZ"]) :verb)),
+  :object
+  (((((((((["healthy" "JJ"]) :adjective)) :adjectives)
+       ((["practices" "NNS"]) :noun))
+      :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["They" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["have" "VBP"]) :verb)),
+  :object
+  (((((["the" "DT"]
+       ((((["same" "JJ"]) :adjective)) :adjectives)
+       ((["employments--the" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["THERE" "NNP"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :verb-phrase (((["was" "VBD"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["difficulty" "NN"]) :noun)) :noun-phrase)
+     ["," ","]
+     ((((((["Glaucon" "NNP"]) :noun)) :noun-phrase)) :noun-phrases))
+    :noun-phrases))}
+ {:subject
+  (((((((["You" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  "," ",",
+  :locators
+  (((["as" "IN"]
+     ((((((["legislator" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+    :locator)),
+  :verb-phrase
+  (((["have" "VBP"]) :verb)
+   ((["already" "RB"]) :adverb)
+   ((["selected" "VBN"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["men" "NNS"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((["Every" "DT"] ((["State" "NNP"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["has" "VBZ"]) :verb)),
+  :object
+  (((((((["subjects" "NNS"]) :noun)) :noun-phrase)
+     ["and" "CC"]
+     ((((((["rulers" "NNS"]) :noun)) :noun-phrase)) :noun-phrases))
+    :noun-phrases))}
+ {:subject
+  (((((((["You" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["got" "VBD"]) :verb)),
+  :object
+  (((((((["me" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["into" "IN"]
+     ((((["the" "DT"] ((["scrape" "NN"]) :noun)) :noun-phrase)
+       ["," ","]
+       ((((((["I" "PRP"]) :contextual-reference)) :noun-phrase))
+        :noun-phrases))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["They" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((["are" "VBP"]) :verb) ((((["not" "RB"]) :adverb)) :adverbs)),
+  :object
+  (((((((((["true" "JJ"]) :adjective)) :adjectives)
+       ((["philosophers" "NNS"]) :noun))
+      :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((["The" "DT"]
+       ((((["fifth" "JJ"]) :adjective)) :adjectives)
+       ((["book" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"]
+       ((((["new" "JJ"]) :adjective)) :adjectives)
+       ((["beginning" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((["the" "DT"] ((["Republic" "NNP"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((["The" "DT"] ((["philosopher" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["follows" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"]
+       ((((["same" "JJ"]) :adjective)) :adjectives)
+       ((["analogy" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((((["Vulgar" "JJ"]) :adjective)
+         ((((["little" "JJ"]) :adjective)) :adjectives))
+        :adjectives)
+       ((["minds" "NNS"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["see" "VB"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["land" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((["A" "DT"]
+       ((((["clever" "JJ"]) :adjective)) :adjectives)
+       ((["mechanic" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["having" "VBG"]) :verb)),
+  :object
+  (((((["a" "DT"] ((["soul" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["I" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["gained" "VBD"]) :verb)),
+  :object
+  (((((((["nothing" "NN"]) :noun)) :noun-phrase)) :noun-phrases))}
+ {:subject
+  (((((((["You" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["understand" "VBP"]) :verb)),
+  :object
+  (((((((["me" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["has" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"]
+       ((((["noblest" "JJS"]) :adjective)) :adjectives)
+       ((["gifts" "NNS"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["nature" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["has" "VBZ"]) :verb)),
+  :object
+  (((((["a" "DT"]
+       ((((["clearer" "JJR"]) :adjective)) :adjectives)
+       ((["conception" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((["the" "DT"] ((["divisions" "NNS"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator)
+   ((((["of" "IN"]
+       ((((((["science" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+      :locator))
+    :locators))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["brings" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["accusation" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["against" "IN"]
+     ((((((["himself" "PRP"]) :contextual-reference)) :noun-phrase))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((["The" "DT"] ((["question" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((["is" "VBZ"]) :verb)
+   ((["asked,--Why" "RB"]) :adverb)
+   ((["are" "VBP"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["citizens" "NNS"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["states" "NNS"]) :noun)) :noun-phrase)) :noun-phrases))
+    :locator))}
+ {:subject
+  (((((["The" "DT"]
+       ((((["same" "JJ"]) :adjective)
+         ((((["double" "JJ"]) :adjective)) :adjectives))
+        :adjectives)
+       ((["feeling" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["respecting" "VBG"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["mass" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["mankind" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["supposes" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["sciences" "NNS"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["Plato" "NNP"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :verb-phrase (((["represents" "VBZ"]) :verb)),
+  :object
+  (((((["these" "DT"] ((["ideals" "NNS"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["in" "IN"]
+     ((((["a" "DT"] ((["figure" "NN"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((["is" "VBZ"]) :verb)
+   ((["also" "RB"]) :adverb)
+   ((["preparing" "VBG"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["way" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["It" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["IDEA" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["It" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["meant" "VBD"]) :verb)),
+  :object
+  (((((((["unity" "NN"]) :noun)) :noun-phrase)) :noun-phrases))}
+ {:subject
+  (((((((["It" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["was" "VBD"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["truth" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((["all" "DT"] ((["things" "NNS"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["It" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["was" "VBD"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["cause" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((["all" "DT"] ((["things" "NNS"]) :noun)) :noun-phrase)
+       ["," ","]
+       ((((["the" "DT"] ((["power" "NN"]) :noun)) :noun-phrase))
+        :noun-phrases))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["It" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["was" "VBD"]) :verb)),
+  :object
+  (((((["the" "DT"]
+       ((((["universal" "JJ"]) :adjective)) :adjectives)
+       ((["reason" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["It" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["was" "VBD"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["life" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["They" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["are" "VBP"]) :verb)),
+  :object
+  (((((((["ourselves" "PRP"]) :contextual-reference)) :noun-phrase)
+     ["," ","]
+     ((((((["I" "PRP"]) :contextual-reference)) :noun-phrase))
+      :noun-phrases))
+    :noun-phrases))}
+ {:subject
+  (((((["All" "DT"] ((["number" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((["has" "VBZ"]) :verb) ((((["also" "RB"]) :adverb)) :adverbs)),
+  :object
+  (((((["an" "DT"]
+       ((((["elevating" "JJ"]) :adjective)) :adjectives)
+       ((["effect" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["I" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["am" "VBP"]) :verb)),
+  :object
+  (((((["an" "DT"] ((["exception" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["Plato" "NNP"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :verb-phrase (((["appreciated" "VBD"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["value" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((["this" "DT"] ((["faculty" "NN"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((["The" "DT"] ((["den" "NN"]) :noun)) :noun-phrase)
+     ["or" "CC"]
+     ((((((["cave" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+    :noun-phrases)),
+  :verb-phrase (((["represents" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"]
+       ((((["narrow" "JJ"]) :adjective)) :adjectives)
+       ((["sphere" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["politics" "NNS"]) :noun)) :noun-phrase)
+       ["or" "CC"]
+       ((((((["law" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["They" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["catch" "VBP"]) :verb)),
+  :object
+  (((((((["opinions" "NNS"]) :noun)) :noun-phrase)) :noun-phrases))}
+ {:subject
+  (((((((["They" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((((["hardly" "RB"]) :adverb)) :adverbs)
+   ((["retain" "VBP"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["distinction" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["They" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["suppose" "VBP"]) :verb)),
+  :object
+  (((((((["themselves" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["They" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((["are" "VBP"]) :verb)
+   ((((["generally" "RB"]) :adverb)) :adverbs)),
+  :object
+  (((((["the" "DT"] ((["disciples" "NNS"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((["some" "DT"]
+         ((((["eminent" "JJ"]) :adjective)) :adjectives)
+         ((["professor" "NN"]) :noun))
+        :noun-phrase)
+       ["or" "CC"]
+       ((((((["sophist" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["Plants" "NNS"]) :noun)) :noun-phrase)
+     ["or" "CC"]
+     ((((((["animals" "NNS"]) :noun)) :noun-phrase)) :noun-phrases))
+    :noun-phrases)),
+  :verb-phrase (((["have" "VBP"]) :verb)),
+  :object
+  (((((((["times" "NNS"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["fertility" "NN"]) :noun)) :noun-phrase)
+       ["and" "CC"]
+       ((((((["sterility" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((["The" "DT"]
+       ((((["young" "JJ"]) :adjective)) :adjectives)
+       ((["man" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["compares" "VBZ"]) :verb)),
+  :object
+  (((((["this" "DT"] ((["spirit" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["They" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["are" "VBP"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["drones" "NNS"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((["the" "DT"] ((["hive" "NN"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((((["Insatiable" "JJ"]) :adjective)) :adjectives)
+       ((["avarice" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["ruling" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["son" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((["a" "DT"]
+         ((((["miserly" "JJ"]) :adjective)) :adjectives)
+         ((["oligarch" "NN"]) :noun))
+        :noun-phrase))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((["The" "DT"] ((["State" "NNP"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["demands" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"]
+       ((((["strong" "JJ"]) :adjective)) :adjectives)
+       ((["wine" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["freedom" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["Anarchy" "NNP"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["law" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((["The" "DT"] ((["people" "NNS"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["have" "VBP"]) :verb)),
+  :object
+  (((((["some" "DT"] ((["protector" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["throws" "VBZ"]) :verb)),
+  :object
+  (((((["a" "DT"] ((["veil" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["mystery" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+    :locator)
+   ((((["over" "IN"]
+       ((((["the" "DT"] ((["origin" "NN"]) :noun)) :noun-phrase))
+        :noun-phrases))
+      :locator)
+     ((((["of" "IN"]
+         ((((["the" "DT"] ((["decline" "NN"]) :noun)) :noun-phrase))
+          :noun-phrases))
+        :locator))
+      :locators))
+    :locators))}
+ {:subject
+  (((((["Another" "DT"] ((["help" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["allusion" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["in" "IN"]
+     ((((((["Aristotle" "NNP"]) :noun)) :noun-phrase)) :noun-phrases))
+    :locator))}
+ {:subject
+  (((((["The" "DT"] ((["second" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["number" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["generations" "NNS"]) :noun)) :noun-phrase)
+       ["or" "CC"]
+       ((((((["births" "NNS"]) :noun)) :noun-phrase)) :noun-phrases))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((["This" "DT"] ((["explanation" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["derives" "VBZ"]) :verb)),
+  :object
+  (((((["a" "DT"]
+       ((((["certain" "JJ"]) :adjective)) :adjectives)
+       ((["plausibility" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["from" "IN"]
+     ((((["the" "DT"] ((["circumstance" "NN"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["Love" "NN"]) :noun)) :noun-phrase)) :noun-phrases)),
+  "," ",",
+  :locators
+  (((["like" "IN"]
+     ((((((["drunkenness" "NN"]) :noun)) :noun-phrase)
+       ["and" "CC"]
+       ((((((["madness" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+      :noun-phrases))
+    :locator)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["a" "DT"] ((["tyranny" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((((["Many" "JJ"]) :adjective)) :adjectives)
+       ((["desires" "NNS"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["require" "VBP"]) :verb)),
+  :object
+  (((((((((["much" "JJ"]) :adjective)) :adjectives)
+       ((["money" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["Love" "NN"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :verb-phrase (((["urges" "VBZ"]) :verb)),
+  :object
+  (((((((["them" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((((["Many" "JJ"]) :adjective)) :adjectives)
+       ((["things" "NNS"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["pleased" "VBD"]) :verb)),
+  :object
+  (((((((["me" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["in" "IN"]
+     ((((["the" "DT"] ((["order" "NN"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["makes" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["Gods" "NNP"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((["The" "DT"] ((["painter" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((["imitates" "VBZ"]) :verb) ((((["not" "RB"]) :adverb)) :adverbs)),
+  :object
+  (((((["the" "DT"]
+       ((((["original" "JJ"]) :adjective)) :adjectives)
+       ((["bed" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["indulges" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["feelings" "NNS"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((["The" "DT"]
+       ((((["clever" "JJ"]) :adjective)) :adjectives)
+       ((["rogue" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["makes" "VBZ"]) :verb)),
+  :object
+  (((((["a" "DT"]
+       ((((["great" "JJ"]) :adjective)) :adjectives)
+       ((["start" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["added" "VBD"]) :verb)),
+  :object
+  (((((((["something" "NN"]) :noun)) :noun-phrase)) :noun-phrases))}
+ {:subject
+  (((((["The" "DT"] ((["outermost" "NNP"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["had" "VBD"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["rim" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["saw" "VBD"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["soul" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["Orpheus" "NNP"]) :noun)) :noun-phrase)) :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["enemy" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((["the" "DT"] ((["poets" "NNS"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator)
+   ((((["because" "IN"]
+       ((((((["poetry" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+      :locator))
+    :locators))}
+ {:subject
+  (((((((["Euripides" "NNS"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :verb-phrase (((["exhibited" "VBD"]) :verb)),
+  :object
+  (((((["the" "DT"]
+       ((((["last" "JJ"]) :adjective)) :adjectives)
+       ((["phase" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((["the" "DT"]
+         ((((["tragic" "JJ"]) :adjective)) :adjectives)
+         ((["drama" "NN"]) :noun))
+        :noun-phrase))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((["The" "DT"] ((["actor" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["slave" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((["does" "VBZ"]) :verb)
+   ((["not" "RB"]) :adverb)
+   ((["admit" "VB"]) :verb)),
+  :object
+  (((((((["Aristotle" "NNP"]) :noun)) :noun-phrase)) :noun-phrases))}
+ {:subject
+  (((((((["It" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((["is" "VBZ"]) :verb) ((((["not" "RB"]) :adverb)) :adverbs)),
+  :object
+  (((((["every" "DT"] ((["indulgence" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((["the" "DT"] ((["feelings" "NNS"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["Plato" "NNP"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :verb-phrase (((["has" "VBZ"]) :verb)),
+  :object
+  (((((((["himself" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["tells" "VBZ"]) :verb)),
+  :object
+  (((((((["us" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["that" "IN"]
+     ((((((["he" "PRP"]) :contextual-reference)) :noun-phrase))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["regards" "VBZ"]) :verb)),
+  :object
+  (((((((["them" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["compares" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["corruption" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((["The" "DT"] ((["tale" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((["has" "VBZ"]) :verb)
+   ((((["certainly" "RB"]) :adverb)) :adverbs)),
+  :object
+  (((((["an" "DT"]
+       ((((["oriental" "JJ"]) :adjective)) :adjectives)
+       ((["character" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((["The" "DT"] ((["cylinder" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["containing" "VBG"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["orbits" "NNS"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((["the" "DT"] ((["stars" "NNS"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((["The" "DT"] ((["earth" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["a" "DT"] ((["sort" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["earth" "NN"]) :noun)) :noun-phrase)
+       ["and" "CC"]
+       ((((((["heaven" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["They" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["are" "VBP"]) :verb)),
+  :object
+  (((((((((["such" "JJ"]) :adjective)) :adjectives)
+       ((["touches" "NNS"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["nature" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+    :locator)
+   ((((["as" "IN"]
+       ((((["the" "DT"] ((["art" "NN"]) :noun)) :noun-phrase))
+        :noun-phrases))
+      :locator)
+     ((((["of" "IN"]
+         ((((((["Defoe" "NNP"]) :noun)) :noun-phrase)) :noun-phrases))
+        :locator))
+      :locators))
+    :locators))}
+ {:subject
+  (((((((["Marriage" "NN"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :verb-phrase (((["was" "VBD"]) :verb)),
+  :object
+  (((((["a" "DT"]
+       ((((["public" "JJ"]) :adjective)) :adjectives)
+       ((["institution" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((["The" "DT"] ((["Spartans" "NNP"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  "," ",",
+  :locators
+  (((["though" "IN"]
+     ((((["an" "DT"]
+         ((((["unpoetical" "JJ"]) :adjective)) :adjectives)
+         ((["race" "NN"]) :noun))
+        :noun-phrase))
+      :noun-phrases))
+    :locator)),
+  :verb-phrase
+  (((["were" "VBD"]) :verb)
+   ((((["nevertheless" "RB"]) :adverb)) :adverbs)),
+  :object
+  (((((((["lovers" "NNS"]) :noun)) :noun-phrase)) :noun-phrases))}
+ {:subject
+  (((((((["Plato" "NNP"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :verb-phrase (((["has" "VBZ"]) :verb)),
+  :object
+  (((((["no" "DT"] ((["idea" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["Plato" "NNP"]) :noun)) :noun-phrase)) :noun-phrases)),
+  "," ",",
+  :locators
+  (((["like" "IN"]
+     ((((["the" "DT"]
+         ((((["old" "JJ"]) :adjective)) :adjectives)
+         ((["painters" "NNS"]) :noun))
+        :noun-phrase))
+      :noun-phrases))
+    :locator)),
+  :verb-phrase (((["retains" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"]
+       ((((["traditional" "JJ"]) :adjective)) :adjectives)
+       ((["form" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((["The" "DT"] ((["Pythagoreans" "NNS"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  "," ",",
+  :locators
+  (((["like" "IN"]
+     ((((((["Plato" "NNP"]) :noun)) :noun-phrase)) :noun-phrases))
+    :locator)),
+  :verb-phrase (((["enforced" "VBN"]) :verb)),
+  :object
+  (((((["a" "DT"] ((["rule" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["attempts" "VBZ"]) :verb)),
+  :object
+  (((((["a" "DT"] ((["task" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["Aristotle" "NNP"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :verb-phrase (((["censures" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["community" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["property" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((((["Primitive" "JJ"]) :adjective)) :adjectives)
+       ((["society" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["offered" "VBD"]) :verb)),
+  :object
+  (((((((((["many" "JJ"]) :adjective)) :adjectives)
+       ((["examples" "NNS"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["land" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((((["Male" "JJ"]) :adjective)
+         ["and" "CC"]
+         ((((["female" "JJ"]) :adjective)) :adjectives))
+        :adjectives)
+       ((["animals" "NNS"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["have" "VBP"]) :verb)),
+  :object
+  (((((["the" "DT"]
+       ((((["same" "JJ"]) :adjective)) :adjectives)
+       ((["pursuits--why" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((["The" "DT"] ((["Greeks" "NNP"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["had" "VBD"]) :verb)),
+  :object
+  (((((((((["noble" "JJ"]) :adjective)) :adjectives)
+       ((["conceptions" "NNS"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["womanhood" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+    :locator)
+   ((((["in" "IN"]
+       ((((["the" "DT"] ((["goddesses" "NNS"]) :noun)) :noun-phrase))
+        :noun-phrases))
+      :locator))
+    :locators))}
+ {:subject
+  (((((((["She" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["took" "VBD"]) :verb)),
+  :object
+  (((((["no" "DT"] ((["part" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["in" "IN"]
+     ((((((((["military" "JJ"]) :adjective)
+           ["or" "CC"]
+           ((((["political" "JJ"]) :adjective)) :adjectives))
+          :adjectives)
+         ((["matters" "NNS"]) :noun))
+        :noun-phrase))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((["An" "DT"]
+       ((((["eminent" "JJ"]) :adjective)) :adjectives)
+       ((["physiologist" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["thinks" "VBZ"]) :verb)),
+  :object
+  (((((((["it" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((["The" "DT"]
+       ((((["common" "JJ"]) :adjective)) :adjectives)
+       ((["prostitute" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((((["rarely" "RB"]) :adverb)) :adverbs) ((["has" "VBZ"]) :verb)),
+  :object
+  (((((["any" "DT"] ((["offspring" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["They" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["isolate" "VBP"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["animal" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((((["Great" "JJ"]) :adjective)) :adjectives)
+       ((["men" "NNS"]) :noun))
+      :noun-phrase)
+     ["and" "CC"]
+     ((((((((["great" "JJ"]) :adjective)) :adjectives)
+         ((["women" "NNS"]) :noun))
+        :noun-phrase))
+      :noun-phrases))
+    :noun-phrases)),
+  :verb-phrase
+  (((["have" "VBP"]) :verb)
+   ((["rarely" "RB"]) :adverb)
+   ((["had" "VBN"]) :verb)),
+  :object
+  (((((((((["great" "JJ"]) :adjective)) :adjectives)
+       ((["fathers" "NNS"]) :noun))
+      :noun-phrase)
+     ["and" "CC"]
+     ((((((["mothers" "NNS"]) :noun)) :noun-phrase)) :noun-phrases))
+    :noun-phrases))}
+ {:subject
+  (((((((["Nothing" "NN"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((((["commoner" "NN"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :locators
+  (((["than" "IN"]
+     ((((["the" "DT"] ((["remark" "NN"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((["did" "VBD"]) :verb)
+   ((["not" "RB"]) :adverb)
+   ((["reflect" "VB"]) :verb)),
+  :object
+  (((((["that" "DT"] ((["Sparta" "NNP"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["They" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["had" "VBD"]) :verb)),
+  :object
+  (((((["no" "DT"] ((["Themistocles" "NNS"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["We" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((((["unavoidably" "RB"]) :adverb)) :adverbs)
+   ((["lose" "VBP"]) :verb)),
+  :object
+  (((((((["sight" "NN"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((["the" "DT"] ((["principle" "NN"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator)
+   ((((["of" "IN"]
+       ((((((["utility" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+      :locator))
+    :locators))}
+ {:subject
+  (((((((["We" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((((["hardly" "RB"]) :adverb)) :adverbs)
+   ((["appreciate" "VB"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["power" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["Plato" "NNP"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"]
+       ((((["first" "JJ"]) :adjective)) :adjectives)
+       ((["writer" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["recognizes" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["danger" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((((["unsettling" "JJ"]) :adjective)
+           ((((["young" "JJ"]) :adjective)) :adjectives))
+          :adjectives)
+         ((["men" "NNS"]) :noun))
+        :noun-phrase))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["Plato" "NNP"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :verb-phrase (((["has" "VBZ"]) :verb)),
+  :object
+  (((((((((["several" "JJ"]) :adjective)
+         ((((["good" "JJ"]) :adjective)) :adjectives))
+        :adjectives)
+       ((["notions" "NNS"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["about" "IN"]
+     ((((((["medicine" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["They" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["were" "VBD"]) :verb)),
+  :object
+  (((((["the" "DT"]
+       ((((["only" "JJ"]) :adjective)) :adjectives)
+       ((["organon" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["thought" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["It" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["an" "DT"] ((["abstraction" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["It" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["makes" "VBZ"]) :verb)),
+  :object
+  (((((["a" "DT"]
+       ((((["great" "JJ"]) :adjective)) :adjectives)
+       ((["difference" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["whether" "IN"]
+     ((((["the" "DT"]
+         ((((["general" "JJ"]) :adjective)) :adjectives)
+         ((["expectation" "NN"]) :noun))
+        :noun-phrase))
+      :noun-phrases))
+    :locator)
+   ((((["of" "IN"]
+       ((((((["knowledge" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+      :locator)
+     ["," ","]
+     ((((["as" "IN"]
+         ((((["this" "DT"]
+             ((((["indefinite" "JJ"]) :adjective)) :adjectives)
+             ((["feeling" "NN"]) :noun))
+            :noun-phrase))
+          :noun-phrases))
+        :locator))
+      :locators))
+    :locators))}
+ {:subject
+  (((((((["It" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["a" "DT"] ((["cause" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((["This" "DT"]
+       ((((["ideal" "JJ"]) :adjective)) :adjectives)
+       ((["science" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"]
+       ((((["highest" "JJS"]) :adjective)) :adjectives)
+       ((["process" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["thought" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["I" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["introduced" "VBD"]) :verb)),
+  :object
+  (((((((["Didymus" "NNP"]) :noun)) :noun-phrase)
+     ["and" "CC"]
+     ((((((["Eustathius" "NNP"]) :noun)) :noun-phrase)) :noun-phrases))
+    :noun-phrases))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["has" "VBZ"]) :verb)),
+  :object
+  (((((["no" "DT"]
+       ((((["sufficient" "JJ"]) :adjective)) :adjectives)
+       ((["idea" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((["the" "DT"] ((["effect" "NN"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator)
+   ((((["of" "IN"]
+       ((((((["literature" "NN"]) :noun)) :noun-phrase))
+        :noun-phrases))
+      :locator)
+     ((((["on" "IN"]
+         ((((["the" "DT"] ((["formation" "NN"]) :noun)) :noun-phrase))
+          :noun-phrases))
+        :locator)
+       ((((["of" "IN"]
+           ((((["the" "DT"] ((["mind" "NN"]) :noun)) :noun-phrase))
+            :noun-phrases))
+          :locator))
+        :locators))
+      :locators))
+    :locators))}
+ {:subject
+  (((((((["It" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"]
+       ((((["best" "JJS"]) :adjective)) :adjectives)
+       ((["form" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["They" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((["have" "VBP"]) :verb) ((((["not" "RB"]) :adverb)) :adverbs)),
+  :object
+  (((((["the" "DT"] ((["will" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["Tradition" "NN"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :verb-phrase (((["told" "VBD"]) :verb)),
+  :object
+  (((((((["them" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((((["many" "JJ"]) :adjective)) :adjectives)
+         ((["destructions" "NNS"]) :noun))
+        :noun-phrase))
+      :noun-phrases))
+    :locator)
+   ((((["of" "IN"]
+       ((((((["mankind" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+      :locator))
+    :locators))}
+ {:subject
+  (((((["The" "DT"] ((["one" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["has" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["grace" "NN"]) :noun)) :noun-phrase)
+     ["and" "CC"]
+     ((((((["beauty" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["youth" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["prefers" "VBZ"]) :verb)),
+  :object
+  (((((["a" "DT"] ((["mixture" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["forms" "NNS"]) :noun)) :noun-phrase)) :noun-phrases))
+    :locator)
+   ((((["of" "IN"]
+       ((((((["government" "NN"]) :noun)) :noun-phrase))
+        :noun-phrases))
+      :locator))
+    :locators))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["compares" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"]
+       ((((["worst" "JJS"]) :adjective)) :adjectives)
+       ((["parts" "NNS"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((["the" "DT"] ((["Gentile" "NNP"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["shows" "VBZ"]) :verb)),
+  :object
+  (((((((["nothing" "NN"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((["the" "DT"] ((["spirit" "NN"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["traces" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["parallel" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((["the" "DT"] ((["kingdom" "NN"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator)
+   ((((["of" "IN"]
+       ((((((["God" "NNP"]) :noun)) :noun-phrase)) :noun-phrases))
+      :locator))
+    :locators))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["has" "VBZ"]) :verb)),
+  :object
+  (((((["no" "DT"] ((["sympathy" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["with" "IN"]
+     ((((["the" "DT"]
+         ((((["old" "JJ"]) :adjective)) :adjectives)
+         ((["Roman" "NNP"]) :noun))
+        :noun-phrase))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["was" "VBD"]) :verb)),
+  :object
+  (((((["a" "DT"]
+       ((((["great" "JJ"]) :adjective)) :adjectives)
+       ((["genius" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["It" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["vision" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((["an" "DT"] ((["Universal" "NNP"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["It" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((["is" "VBZ"]) :verb) ((((["not" "RB"]) :adverb)) :adverbs)),
+  :object
+  (((((((["'the" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["sees" "VBZ"]) :verb)),
+  :object
+  (((((["no" "DT"] ((["hope" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["happiness" "NN"]) :noun)) :noun-phrase)
+       ["or" "CC"]
+       ((((((["peace" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+      :noun-phrases))
+    :locator)
+   ((((["for" "IN"]
+       ((((((["mankind" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+      :locator)
+     ((((["until" "IN"]
+         ((((["all" "DT"] ((["nations" "NNS"]) :noun)) :noun-phrase))
+          :noun-phrases))
+        :locator)
+       ((((["of" "IN"]
+           ((((["the" "DT"] ((["earth" "NN"]) :noun)) :noun-phrase))
+            :noun-phrases))
+          :locator))
+        :locators))
+      :locators))
+    :locators))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["brings" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["light" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["Plato" "NNP"]) :noun)) :noun-phrase)) :noun-phrases))
+    :locator))}
+ {:subject
+  (((((["The" "DT"] ((["Utopians" "NNPS"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((["do" "VBP"]) :verb)
+   ((["not" "RB"]) :adverb)
+   ((["allow" "VB"]) :verb)),
+  :object
+  (((((((["him" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["a" "DT"]
+       ((((["sanitary" "JJ"]) :adjective)) :adjectives)
+       ((["reformer" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["extends" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["idea" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["happiness" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["has" "VBZ"]) :verb)),
+  :object
+  (((((["a" "DT"]
+       ((((["charming" "JJ"]) :adjective)) :adjectives)
+       ((["fancy" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["prefers" "VBZ"]) :verb)),
+  :object
+  (((((((((["public" "JJ"]) :adjective)) :adjectives)
+       ((["duties" "NNS"]) :noun))
+      :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["ridicules" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"]
+       ((((["new" "JJ"]) :adjective)) :adjectives)
+       ((["logic" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["quotes" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["words" "NNS"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((["the" "DT"] ((["Republic" "NNP"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((["The" "DT"] ((["citizens" "NNS"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["have" "VBP"]) :verb)),
+  :object
+  (((((((["wives" "NNS"]) :noun)) :noun-phrase)
+     ["and" "CC"]
+     ((((((["children" "NNS"]) :noun)) :noun-phrase)) :noun-phrases))
+    :noun-phrases))}
+ {:subject
+  (((((((["It" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["a" "DT"] ((["duty" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((["the" "DT"] ((["chief" "NN"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["It" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["a" "DT"] ((["work" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["Campanella" "NNP"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :verb-phrase (((["takes" "VBZ"]) :verb)),
+  :object (((((((["note" "NN"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["Aristotle" "NNP"]) :noun)) :noun-phrase)) :noun-phrases))
+    :locator))}
+ {:subject
+  (((((["The" "DT"]
+       ((((["first" "JJ"]) :adjective)) :adjectives)
+       ((["ideal" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["future" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((["the" "DT"]
+         ((((["human" "JJ"]) :adjective)) :adjectives)
+         ((["race" "NN"]) :noun))
+        :noun-phrase))
+      :noun-phrases))
+    :locator)
+   ((((["in" "IN"]
+       ((((["this" "DT"] ((["world" "NN"]) :noun)) :noun-phrase))
+        :noun-phrases))
+      :locator))
+    :locators))}
+ {:subject
+  (((((((["We" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["see" "VBP"]) :verb)),
+  :object
+  (((((((["Him" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["in" "IN"]
+     ((((["a" "DT"] ((["figure" "NN"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["We" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["behold" "VBD"]) :verb)),
+  :object
+  (((((((["Him" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["in" "IN"]
+     ((((["a" "DT"] ((["picture" "NN"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["I" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((["went" "VBD"]) :verb) ((((["down" "RB"]) :adverb)) :adverbs)),
+  :object
+  (((((((["yesterday" "NN"]) :noun)) :noun-phrase)) :noun-phrases))}
+ {:subject
+  (((((["The" "DT"] ((["servant" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["took" "VBD"]) :verb)),
+  :object (((((((["hold" "NN"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["me" "PRP"]) :contextual-reference)) :noun-phrase))
+      :noun-phrases))
+    :locator)
+   ((((["by" "IN"]
+       ((((["the" "DT"] ((["cloak" "NN"]) :noun)) :noun-phrase))
+        :noun-phrases))
+      :locator))
+    :locators))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["saluted" "VBD"]) :verb)),
+  :object
+  (((((((["me" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["You" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["are" "VBP"]) :verb)),
+  :object
+  (((((["a" "DT"] ((["philosopher" "NN"]) :noun)) :noun-phrase)
+     ["," ","]
+     ((((((["Thrasymachus" "NNP"]) :noun)) :noun-phrase)
+       ["," ","]
+       ((((((["I" "PRP"]) :contextual-reference)) :noun-phrase))
+        :noun-phrases))
+      :noun-phrases))
+    :noun-phrases))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["made" "VBD"]) :verb)),
+  :object
+  (((((["an" "DT"] ((["attempt" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["gave" "VBD"]) :verb)),
+  :object
+  (((((["a" "DT"]
+       ((((["reluctant" "JJ"]) :adjective)) :adjectives)
+       ((["assent" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["You" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["say" "VBP"]) :verb)),
+  :object
+  (((((["that" "DT"]
+       ((((["perfect" "JJ"]) :adjective)) :adjectives)
+       ((["injustice" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["You" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["are" "VBP"]) :verb)),
+  :object
+  (((((((((["very" "JJ"]) :adjective)) :adjectives)
+       ((["kind" "NN"]) :noun))
+      :noun-phrase)
+     ["," ","]
+     ((((((["I" "PRP"]) :contextual-reference)) :noun-phrase))
+      :noun-phrases))
+    :noun-phrases))}
+ {:subject
+  (((((((["me" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["put" "VBD"]) :verb)),
+  :object
+  (((((((["them" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["into" "IN"]
+     ((((["the" "DT"] ((["mouths" "NNS"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator)
+   ((((["of" "IN"]
+       ((((["the" "DT"] ((["eulogists" "NNS"]) :noun)) :noun-phrase))
+        :noun-phrases))
+      :locator)
+     ((((["of" "IN"]
+         ((((((["injustice" "NN"]) :noun)) :noun-phrase))
+          :noun-phrases))
+        :locator))
+      :locators))
+    :locators))}
+ {:subject
+  (((((((["They" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((["say" "VBP"]) :verb) ((((["also" "RB"]) :adverb)) :adverbs)),
+  :object
+  (((((["that" "DT"] ((["honesty" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((((["only" "RB"]) :adverb)) :adverbs) ((["blames" "VBZ"]) :verb)),
+  :object
+  (((((((["injustice" "NN"]) :noun)) :noun-phrase)) :noun-phrases))}
+ {:subject
+  (((((((["I" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((["had" "VBD"]) :verb)
+   ((["always" "RB"]) :adverb)
+   ((["admired" "VBN"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["genius" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["Glaucon" "NNP"]) :noun)) :noun-phrase)
+       ["and" "CC"]
+       ((((((["Adeimantus" "NNP"]) :noun)) :noun-phrase))
+        :noun-phrases))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["Glaucon" "NNP"]) :noun)) :noun-phrase)
+     ["and" "CC"]
+     ((((["the" "DT"] ((["rest" "NN"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :noun-phrases)),
+  :verb-phrase (((["entreated" "VBD"]) :verb)),
+  :object
+  (((((((["me" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["by" "IN"]
+     ((((["all" "DT"] ((["means" "NNS"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["I" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["told" "VBD"]) :verb)),
+  :object
+  (((((((["them" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((["The" "DT"] ((["second" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["a" "DT"] ((["dwelling" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((["The" "DT"] ((["matter" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((((["never" "RB"]) :adverb)) :adverbs) ((["struck" "VBD"]) :verb)),
+  :object
+  (((((((["me" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((["The" "DT"] ((["gods" "NNS"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((["are" "VBP"]) :verb) ((((["not" "RB"]) :adverb)) :adverbs)),
+  :object
+  (((((((["magicians" "NNS"]) :noun)) :noun-phrase)) :noun-phrases))}
+ {:subject
+  (((((((["I" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["grant" "VBP"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["truth" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["You" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["know" "VBP"]) :verb)),
+  :object
+  (((((["the" "DT"]
+       ((((["first" "JJ"]) :adjective)) :adjectives)
+       ((["lines" "NNS"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((["the" "DT"] ((["Iliad" "NNP"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["I" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((["do" "VBP"]) :verb)
+   ((["not" "RB"]) :adverb)
+   ((["deny" "VB"]) :verb)),
+  :object
+  (((((((["it" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["They" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((["were" "VBD"]) :verb) ((((["very" "RB"]) :adverb)) :adverbs)),
+  :object
+  (((((((((["acute" "JJ"]) :adjective)) :adjectives)
+       ((["persons" "NNS"]) :noun))
+      :noun-phrase)
+     ["," ","]
+     ((((["those" "DT"] ((["sons" "NNS"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["Asclepius" "NNP"]) :noun)) :noun-phrase)) :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["You" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["had" "VBD"]) :verb)),
+  :object
+  (((((((((["good" "JJ"]) :adjective)) :adjectives)
+       ((["reason" "NN"]) :noun))
+      :noun-phrase)
+     ["," ","]
+     ((((((["he" "PRP"]) :contextual-reference)) :noun-phrase))
+      :noun-phrases))
+    :noun-phrases))}
+ {:subject
+  (((((((["I" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["see" "VBP"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["difficulty" "NN"]) :noun)) :noun-phrase)
+     ["," ","]
+     ((((((["I" "PRP"]) :contextual-reference)) :noun-phrase))
+      :noun-phrases))
+    :noun-phrases))}
+ {:subject
+  (((((((["I" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["mean" "VBP"]) :verb)),
+  :object
+  (((((((((["such" "JJ"]) :adjective)) :adjectives)
+       ((["things" "NNS"]) :noun))
+      :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["I" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["see" "VBP"]) :verb)),
+  :object
+  (((((((["nothing" "NN"]) :noun)) :noun-phrase)) :noun-phrases))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["god" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["It" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["knowledge" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((["the" "DT"] ((["guardians" "NNS"]) :noun)) :noun-phrase)
+       ["," ","]
+       ((((((["he" "PRP"]) :contextual-reference)) :noun-phrase))
+        :noun-phrases))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["I" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["grow" "VBP"]) :verb)),
+  :object
+  (((((((["impatient" "NN"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :locators
+  (((["at" "IN"]
+     ((((["the" "DT"] ((["length" "NN"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["felt" "VBD"]) :verb)),
+  :object
+  (((((["a" "DT"] ((["desire" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["We" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["acknowledged--did" "VBD"]) :verb)),
+  :object
+  (((((((["we" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["Men" "NNS"]) :noun)) :noun-phrase)
+     ["and" "CC"]
+     ((((((["women" "NNS"]) :noun)) :noun-phrase)) :noun-phrases))
+    :noun-phrases)),
+  :verb-phrase
+  (((((["alike" "RB"]) :adverb)) :adverbs)
+   ((["possess" "VBP"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["qualities" "NNS"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["I" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["have" "VBP"]) :verb)),
+  :object
+  (((((["no" "DT"] ((["objection" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["You" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["suppose" "VBP"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["wives" "NNS"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["You" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["got" "VBD"]) :verb)),
+  :object
+  (((((((["me" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["into" "IN"]
+     ((((["the" "DT"] ((["scrape" "NN"]) :noun)) :noun-phrase)
+       ["," ","]
+       ((((((["I" "PRP"]) :contextual-reference)) :noun-phrase))
+        :noun-phrases))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["I" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((["do" "VBP"]) :verb)
+   ((["not" "RB"]) :adverb)
+   ((["see" "VB"]) :verb)),
+  :object
+  (((((((["them" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["You" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["ask" "VBP"]) :verb)),
+  :object
+  (((((["a" "DT"] ((["question" "NN"]) :noun)) :noun-phrase)
+     ["," ","]
+     ((((((["I" "PRP"]) :contextual-reference)) :noun-phrase))
+      :noun-phrases))
+    :noun-phrases))}
+ {:subject
+  (((((((["You" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["recognise" "VBP"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["truth" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["They" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["are" "VBP"]) :verb)),
+  :object
+  (((((((["strangers" "NNS"]) :noun)) :noun-phrase)
+     ["," ","]
+     ((((((["he" "PRP"]) :contextual-reference)) :noun-phrase))
+      :noun-phrases))
+    :noun-phrases))}
+ {:subject
+  (((((((["I" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["omitted" "VBD"]) :verb)),
+  :object
+  (((((["the" "DT"]
+       ((((["troublesome" "JJ"]) :adjective)) :adjectives)
+       ((["business" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((["the" "DT"] ((["possession" "NN"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator)
+   ((((["of" "IN"]
+       ((((((["women" "NNS"]) :noun)) :noun-phrase)) :noun-phrases))
+      :locator))
+    :locators))}
+ {:subject
+  (((((((["You" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["mean" "VBP"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["sun" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["I" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((["do" "VBP"]) :verb)
+   ((["not" "RB"]) :adverb)
+   ((["say" "VB"]) :verb)),
+  :object
+  (((((((["heaven" "NN"]) :noun)) :noun-phrase)) :noun-phrases))}
+ {:subject
+  (((((((["I" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["understand" "VBP"]) :verb)),
+  :object
+  (((((((["you" "PRP"]) :contextual-reference)) :noun-phrase)
+     ["," ","]
+     ((((((["he" "PRP"]) :contextual-reference)) :noun-phrase))
+      :noun-phrases))
+    :noun-phrases))}
+ {:subject
+  (((((((["They" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["are" "VBP"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["men" "NNS"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["You" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["mean" "VBP"]) :verb)),
+  :object
+  (((((((["geometry" "NN"]) :noun)) :noun-phrase)) :noun-phrases))}
+ {:subject
+  (((((((["I" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["want" "VBP"]) :verb)),
+  :object
+  (((((((["you" "PRP"]) :contextual-reference)) :noun-phrase)
+     ["," ","]
+     ((((((["I" "PRP"]) :contextual-reference)) :noun-phrase))
+      :noun-phrases))
+    :noun-phrases))}
+ {:subject
+  (((((((["You" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["are" "VBP"]) :verb)),
+  :object
+  (((((["a" "DT"] ((["sculptor" "NN"]) :noun)) :noun-phrase)
+     ["," ","]
+     ((((((["Socrates" "NNP"]) :noun)) :noun-phrase)) :noun-phrases))
+    :noun-phrases))}
+ {:subject
+  (((((((["I" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["asked" "VBD"]) :verb)),
+  :object
+  (((((((["you" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["a" "DT"]
+       ((((["shabby" "JJ"]) :adjective)) :adjectives)
+       ((["fellow" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["We" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["know" "VBP"]) :verb)),
+  :object
+  (((((((["her" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["They" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["draw" "VBP"]) :verb)),
+  :object
+  (((((((["him" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["They" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["are" "VBP"]) :verb)),
+  :object
+  (((((["the" "DT"]
+       ((((["orderly" "JJ"]) :adjective)) :adjectives)
+       ((["class" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((["The" "DT"] ((["people" "NNS"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["are" "VBP"]) :verb)),
+  :object
+  (((((["a" "DT"]
+       ((((["third" "JJ"]) :adjective)) :adjectives)
+       ((["class" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((["The" "DT"] ((["people" "NNS"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((["have" "VBP"]) :verb) ((((["always" "RB"]) :adverb)) :adverbs)),
+  :object
+  (((((["some" "DT"] ((["champion" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((["The" "DT"] ((["father" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((["did" "VBD"]) :verb)
+   ((["not" "RB"]) :adverb)
+   ((["bring" "VB"]) :verb)),
+  :object
+  (((((((["him" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["They" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["are" "VBP"]) :verb)),
+  :object
+  (((((["the" "DT"]
+       ((((["opposite" "JJ"]) :adjective)) :adjectives)
+       ((["extremes" "NNS"]) :noun))
+      :noun-phrase)
+     ["," ","]
+     ((((((["he" "PRP"]) :contextual-reference)) :noun-phrase))
+      :noun-phrases))
+    :noun-phrases))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["has" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["soul" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((["a" "DT"] ((["slave" "NN"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["He" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["has" "VBZ"]) :verb)),
+  :object
+  (((((((["desires" "NNS"]) :noun)) :noun-phrase)) :noun-phrases))}
+ {:subject
+  (((((((["You" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["suppose" "VBP"]) :verb)),
+  :object
+  (((((((((["marvellous" "JJ"]) :adjective)) :adjectives)
+       ((["powers" "NNS"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["in" "IN"]
+     ((((["the" "DT"] ((["artist" "NN"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["Eriphyle" "NNP"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :verb-phrase (((["took" "VBD"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["necklace" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["as" "IN"]
+     ((((["the" "DT"] ((["price" "NN"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["Imitation" "NN"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :verb-phrase
+  (((["is" "VBZ"]) :verb) ((((["only" "RB"]) :adverb)) :adverbs)),
+  :object
+  (((((["a" "DT"] ((["kind" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((((["play" "NN"]) :noun)) :noun-phrase)
+       ["or" "CC"]
+       ((((((["sport" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["I" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["see" "VBP"]) :verb)),
+  :object
+  (((((["a" "DT"]
+       ((((["great" "JJ"]) :adjective)) :adjectives)
+       ((["difficulty" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((["The" "DT"]
+       ((((["first" "JJ"]) :adjective)
+         ["and" "CC"]
+         ((((["outermost" "JJ"]) :adjective)) :adjectives))
+        :adjectives)
+       ((["whorl" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["has" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["rim" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((((["Project" "NNP"] ((["Gutenberg" "NNP"]) :full-name))
+        :full-name))
+      :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["a" "DT"]
+       ((((["registered" "JJ"]) :adjective)) :adjectives)
+       ((["trademark" "NN"]) :noun))
+      :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((["The" "DT"] ((["Foundation" "NNP"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["makes" "VBZ"]) :verb)),
+  :object
+  (((((["no" "DT"] ((["representations" "NNS"]) :noun)) :noun-phrase))
+    :noun-phrases))}
+ {:subject
+  (((((["Some" "DT"] ((["states" "NNS"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((["do" "VBP"]) :verb)
+   ((["not" "RB"]) :adverb)
+   ((["allow" "VB"]) :verb)),
+  :object
+  (((((((["disclaimers" "NNS"]) :noun)) :noun-phrase)) :noun-phrases))}
+ {:subject
+  (((((((["Section" "NN"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :verb-phrase (((["2." "VBD"]) :verb)),
+  :object
+  (((((((["Information" "NN"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :locators
+  (((["about" "IN"]
+     ((((["the" "DT"] ((["Mission" "NNP"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator)
+   ((((["of" "IN"]
+       ((((((["Project" "NNP"]
+             ((["Gutenberg-tm" "NNP"]
+               ((["Project" "NNP"]
+                 ((["Gutenberg-tm" "NNP"]) :full-name))
+                :full-name))
+              :full-name))
+            :full-name))
+          :noun-phrase))
+        :noun-phrases))
+      :locator))
+    :locators))}
+ {:subject
+  (((((((["Section" "NN"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :verb-phrase (((["3." "VBD"]) :verb)),
+  :object
+  (((((((["Information" "NN"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :locators
+  (((["about" "IN"]
+     ((((["the" "DT"] ((["Project" "NNP"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["We" "PRP"]) :contextual-reference)) :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase
+  (((["do" "VBP"]) :verb)
+   ((["not" "RB"]) :adverb)
+   ((["solicit" "VB"]) :verb)),
+  :object
+  (((((((["donations" "NNS"]) :noun)) :noun-phrase)) :noun-phrases)),
+  :locators
+  (((["in" "IN"]
+     ((((((["locations" "NNS"]) :noun)) :noun-phrase)) :noun-phrases))
+    :locator))}
+ {:subject
+  (((((((["Professor" "NNP"]
+         ((["Michael" "NNP"]
+           ((["S." "NNP"] ((["Hart" "NNP"]) :full-name)) :full-name))
+          :full-name))
+        :full-name))
+      :noun-phrase))
+    :noun-phrases)),
+  :verb-phrase (((["is" "VBZ"]) :verb)),
+  :object
+  (((((["the" "DT"] ((["originator" "NN"]) :noun)) :noun-phrase))
+    :noun-phrases)),
+  :locators
+  (((["of" "IN"]
+     ((((["the" "DT"] ((["Project" "NNP"]) :noun)) :noun-phrase))
+      :noun-phrases))
+    :locator))})

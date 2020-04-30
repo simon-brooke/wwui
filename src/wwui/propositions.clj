@@ -1,5 +1,6 @@
 (ns wwui.propositions
-  (:require [clojure.pprint :refer [pprint]]
+  (:require [clojure.math.combinatorics :as combi]
+            [clojure.pprint :refer [pprint]]
             [clojure.string :as s]
             [opennlp.nlp :as nlp]
             [opennlp.treebank :as tb]
@@ -48,20 +49,23 @@
              [:adverb "CC" :adverbs]]
    :verb-phrase [[:verb]
                  [:adverbs :verb]
-                 [:verb :adverb :verb]
-                 [:verb :adverbs]]
+                 [:verb :adverbs :verb]
+                 [:verb :adverbs]
+                 [:verb :adverbs :verb "TO"]]
    :locator [["IN" :noun-phrases]]
    :locators [[:locator]
               [:locator :locators]
               [:locator "," :locators]]
+   :location [[:locators]]
    :subject [[:noun-phrases]]
    :object [[:noun-phrases]]
    :proposition [[:subject :verb-phrase :object]
-                 [:locators "," :subject :verb-phrase :object]
-                 [:subject "," :locators "," :verb-phrase :object]
-                 [:subject :verb-phrase :object :locators]]
+                 [:location "," :subject :verb-phrase :object]
+                 [:subject "," :location "," :verb-phrase :object]
+                 [:subject :verb-phrase :object :location]]
    :propositions [[:proposition]
-                  [:proposition "CC" :propositions]]})
+                  [:proposition "CC" :propositions]
+                  [:proposition "," "CC" :propositions]]})
 
 (declare reparse rdp-seek)
 
@@ -154,22 +158,38 @@
   ;; to the knowledge accessor in the hope of finding a true name.
   parse-tree)
 
-(defn normalise-proposition
+(defn normalise
   [parse-tree ka]
-  (when
-    (= (nth parse-tree 1) :proposition)
-    (reduce
-      merge
-      {}
-      (map
-        #(assoc {} (nth % 1) (identify (first %) ka))
-        (first parse-tree)))))
-
-;; (defn normalise
-;;   [parse-tree ka]
-;;   (if
-;;     (and (coll? parse-tree) (keyword? (nth parse-tree 1)))
-;;     (case (nth parse-tree 1)
+  (if
+    (and (coll? parse-tree) (= (count parse-tree) 2)(keyword? (nth parse-tree 1)))
+    (case (nth parse-tree 1)
+      :proposition (list
+                     (reduce
+                       merge
+                       {}
+                       (map
+                         ;; TODO: use combinatorics to extract all propositions from
+                         ;; a proposition having multiple locations, multiple subject,
+                         ;; objects and/or verbs
+                         #(assoc {} (nth % 1) (identify (first %) ka))
+                         (map #(normalise % ka) (first parse-tree)))))
+      (:location :subject :object)
+      (cons
+        (reduce
+          concat
+          (remove
+            empty?
+            (map #(normalise % ka) (first parse-tree))))
+        (list (nth parse-tree 1)))
+      (:propositions :locators :noun-phrases :verbs)
+      (reduce
+        concat
+        (remove
+          empty?
+          (map #(normalise % ka) (first parse-tree))))
+      ;; else
+      parse-tree)
+    parse-tree))
 
 (defn propositions
   "Given a `tagged-sentence`, return a list of propositions detected in that
@@ -184,17 +204,25 @@
   ([tagged-sentence ;; ^wildwood.knowledge-accessor.Accessor
     knowledge-accessor]
    ;; TODO: doesn't work yet.
-   (map
-     #(normalise-proposition % knowledge-accessor)
-     (first (first (reparse tagged-sentence grammar :propositions))))))
+   (reduce
+     concat
+     (remove
+       empty?
+       (map
+         #(normalise % knowledge-accessor)
+         (first (first (reparse tagged-sentence grammar :propositions))))))))
 
 (defn propositions-from-file
   [file-path]
   (reduce
     concat
     (remove
-      nil?
+      empty?
       (map
         #(propositions (pos-tag (tokenize %)))
         (get-sentences (slurp file-path))))))
 
+;; (reparse (pos-tag (tokenize "True love is the daughter of temperance, and temperance is utterly opposed to the madness of bodily pleasure.")) grammar :propositions)
+;; (reparse [["temperance" "NN"] ["is" "VBZ"] ["utterly" "RB"] ["opposed" "VBN"] ["to" "TO"] ["the" "DT"] ["madness" "NN"] ["of" "IN"] ["bodily" "JJ"] ["pleasure" "NN"]] grammar :subject)
+;; (reparse [["is" "VBZ"] ["utterly" "RB"] ["opposed" "VBN"] ["to" "TO"] ["the" "DT"] ["madness" "NN"] ["of" "IN"] ["bodily" "JJ"] ["pleasure" "NN"]] grammar :verb-phrase)
+;; (reparse [["is" "VBZ"] ["utterly" "RB"] ["opposed" "VBN"] ["to" "TO"] ["the" "DT"] ["madness" "NN"] ["of" "IN"] ["bodily" "JJ"] ["pleasure" "NN"]] grammar :verb-phrase)

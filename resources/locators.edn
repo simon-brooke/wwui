@@ -1,0 +1,21 @@
+(def locators '((((["of" "IN"]
+       ((((((["idealism" "NN"]) :noun)) :noun-phrase)) :noun-phrases))
+      :locator)
+     ((((["in" "IN"]
+         ((((((["philosophy" "NN"]) :noun)) :noun-phrase))
+          :noun-phrases))
+        :locator)
+       ["," ","]
+       ((((["in" "IN"]
+           ((((((["politics" "NNS"]) :noun)) :noun-phrase))
+            :noun-phrases))
+          :locator)
+         ["," ","]
+         ((((["in" "IN"]
+             ((((((["literature" "NN"]) :noun)) :noun-phrase))
+              :noun-phrases))
+            :locator))
+          :locators))
+        :locators))
+      :locators))
+    :locators))
