@@ -1,0 +1,692 @@
+<html>
+ <head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" href="../coverage.css"/>  <title> wwui/propositions.clj </title>
+ </head>
+ <body>
+<span class="covered" title="1 out of 1 forms covered">
+                001&nbsp;&nbsp;(ns&nbsp;wwui.propositions
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                002&nbsp;&nbsp;&nbsp;&nbsp;(:require&nbsp;[clojure.math.combinatorics&nbsp;:as&nbsp;combi]
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                003&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[clojure.pprint&nbsp;:refer&nbsp;[pprint]]
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                004&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[clojure.string&nbsp;:as&nbsp;s]
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                005&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[opennlp.nlp&nbsp;:as&nbsp;nlp]
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                006&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[opennlp.treebank&nbsp;:as&nbsp;tb]
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                007&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[taoensso.timbre&nbsp;:as&nbsp;log&nbsp;:refer&nbsp;[debug&nbsp;error&nbsp;info&nbsp;spy]]
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                008&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[wildwood.knowledge-accessor&nbsp;:refer&nbsp;[Accessor]]))
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                009&nbsp;&nbsp;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                010&nbsp;&nbsp;;;&nbsp;Position&nbsp;tags&nbsp;used&nbsp;by&nbsp;OpenNLP&nbsp;for&nbsp;English&nbsp;are&nbsp;documented&nbsp;here:
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                011&nbsp;&nbsp;;;&nbsp;https:&#x2F;&#x2F;dpdearing.com&#x2F;posts&#x2F;2011&#x2F;12&#x2F;opennlp-part-of-speech-pos-tags-penn-english-treebank&#x2F;
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                012&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="4 out of 4 forms covered">
+                013&nbsp;&nbsp;(def&nbsp;get-sentences&nbsp;(nlp&#x2F;make-sentence-detector&nbsp;&quot;models&#x2F;en-sent.bin&quot;))
+                </span><br/>
+<span class="covered" title="4 out of 4 forms covered">
+                014&nbsp;&nbsp;(def&nbsp;tokenize&nbsp;(nlp&#x2F;make-tokenizer&nbsp;&quot;models&#x2F;en-token.bin&quot;))
+                </span><br/>
+<span class="covered" title="4 out of 4 forms covered">
+                015&nbsp;&nbsp;(def&nbsp;pos-tag&nbsp;(nlp&#x2F;make-pos-tagger&nbsp;&quot;models&#x2F;en-pos-maxent.bin&quot;))
+                </span><br/>
+<span class="covered" title="4 out of 4 forms covered">
+                016&nbsp;&nbsp;(def&nbsp;name-find&nbsp;(nlp&#x2F;make-name-finder&nbsp;&quot;models&#x2F;namefind&#x2F;en-ner-person.bin&quot;))
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                017&nbsp;&nbsp;;;&nbsp;(def&nbsp;chunker&nbsp;(make-treebank-chunker&nbsp;&quot;models&#x2F;en-chunker.bin&quot;))
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                018&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                019&nbsp;&nbsp;(def&nbsp;grammar
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                020&nbsp;&nbsp;&nbsp;&nbsp;&quot;The&nbsp;objective&nbsp;of&nbsp;this&nbsp;grammar&nbsp;is&nbsp;to&nbsp;allow&nbsp;us&nbsp;to&nbsp;take&nbsp;a&nbsp;sequence&nbsp;of&nbsp;tagged&nbsp;symbols,&nbsp;and
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                021&nbsp;&nbsp;&nbsp;&nbsp;produce&nbsp;a&nbsp;higher-level&nbsp;tagging&nbsp;of&nbsp;parts&nbsp;of&nbsp;speech,&nbsp;and&nbsp;ultimately&nbsp;propositions,&nbsp;from&nbsp;them.
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                022&nbsp;&nbsp;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                023&nbsp;&nbsp;&nbsp;&nbsp;*NOTE&nbsp;THAT*&nbsp;tags&nbsp;in&nbsp;this&nbsp;grammar&nbsp;are&nbsp;always&nbsp;keywords,&nbsp;to&nbsp;distinguish&nbsp;them&nbsp;from&nbsp;OpenNLP
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                024&nbsp;&nbsp;&nbsp;&nbsp;tags,&nbsp;which&nbsp;tag&nbsp;individual&nbsp;tokens&nbsp;and&nbsp;are&nbsp;represented&nbsp;as&nbsp;strings.&quot;
+                </span><br/>
+<span class="covered" title="22 out of 22 forms covered">
+                025&nbsp;&nbsp;&nbsp;&nbsp;{:contextual-reference&nbsp;[[&quot;PRP&quot;]]&nbsp;;;&nbsp;the&nbsp;documentation&nbsp;says&nbsp;PRP&nbsp;is&nbsp;&#x27;peronal&nbsp;pronoun&#x27;,
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                026&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;;&nbsp;but&nbsp;it&nbsp;seems&nbsp;to&nbsp;be&nbsp;all&nbsp;pronouns.
+                </span><br/>
+<span class="covered" title="9 out of 9 forms covered">
+                027&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:noun&nbsp;[[&quot;NN&quot;][&quot;NNS&quot;][&quot;NNP&quot;][&quot;NNPS&quot;]]
+                </span><br/>
+<span class="covered" title="3 out of 3 forms covered">
+                028&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:full-name&nbsp;[[&quot;NNP&quot;]
+                </span><br/>
+<span class="covered" title="3 out of 3 forms covered">
+                029&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&quot;NNP&quot;&nbsp;:full-name]]&nbsp;;;&nbsp;an&nbsp;unpunctuated&nbsp;sequence&nbsp;of&nbsp;proper&nbsp;nouns
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                030&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;;&nbsp;probably&nbsp;represents&nbsp;a&nbsp;full&nbsp;name
+                </span><br/>
+<span class="covered" title="3 out of 3 forms covered">
+                031&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:noun-phrase&nbsp;[[:contextual-reference]
+                </span><br/>
+<span class="covered" title="2 out of 2 forms covered">
+                032&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:noun]
+                </span><br/>
+<span class="covered" title="2 out of 2 forms covered">
+                033&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:full-name]
+                </span><br/>
+<span class="covered" title="3 out of 3 forms covered">
+                034&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&quot;DT&quot;&nbsp;:noun]
+                </span><br/>
+<span class="covered" title="3 out of 3 forms covered">
+                035&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:adjectives&nbsp;:noun]
+                </span><br/>
+<span class="covered" title="4 out of 4 forms covered">
+                036&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&quot;DT&quot;&nbsp;:adjectives&nbsp;:noun]]
+                </span><br/>
+<span class="covered" title="3 out of 3 forms covered">
+                037&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:noun-phrases&nbsp;[[:noun-phrase]
+                </span><br/>
+<span class="covered" title="4 out of 4 forms covered">
+                038&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:noun-phrase&nbsp;&quot;CC&quot;&nbsp;:noun-phrases]
+                </span><br/>
+<span class="covered" title="4 out of 4 forms covered">
+                039&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:noun-phrase&nbsp;&quot;,&quot;&nbsp;:noun-phrases]]
+                </span><br/>
+<span class="covered" title="7 out of 7 forms covered">
+                040&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:adjective&nbsp;[[&quot;JJ&quot;][&quot;JJR&quot;][&quot;JJS&quot;]]
+                </span><br/>
+<span class="covered" title="3 out of 3 forms covered">
+                041&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:adjectives&nbsp;[[:adjective]
+                </span><br/>
+<span class="covered" title="3 out of 3 forms covered">
+                042&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:adjective&nbsp;:adjectives]
+                </span><br/>
+<span class="covered" title="4 out of 4 forms covered">
+                043&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:adjective&nbsp;&quot;,&quot;&nbsp;:adjectives]
+                </span><br/>
+<span class="covered" title="4 out of 4 forms covered">
+                044&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:adjective&nbsp;&quot;CC&quot;&nbsp;:adjectives]]
+                </span><br/>
+<span class="covered" title="13 out of 13 forms covered">
+                045&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:verb&nbsp;[[&quot;VB&quot;][&quot;VBD&quot;][&quot;VBG&quot;][&quot;VBN&quot;][&quot;VBP&quot;][&quot;VBZ&quot;]]
+                </span><br/>
+<span class="covered" title="7 out of 7 forms covered">
+                046&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:adverb&nbsp;[[&quot;RB&quot;][&quot;RBR&quot;][&quot;RBS&quot;]]&nbsp;;;&nbsp;beware&nbsp;here&nbsp;that&nbsp;negation&nbsp;and&nbsp;qualification&nbsp;show&nbsp;up&nbsp;only&nbsp;as&nbsp;adverbs
+                </span><br/>
+<span class="covered" title="3 out of 3 forms covered">
+                047&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:adverbs&nbsp;[[:adverb]
+                </span><br/>
+<span class="covered" title="4 out of 4 forms covered">
+                048&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:adverb&nbsp;&quot;,&quot;&nbsp;:adverbs]
+                </span><br/>
+<span class="covered" title="4 out of 4 forms covered">
+                049&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:adverb&nbsp;&quot;CC&quot;&nbsp;:adverbs]]
+                </span><br/>
+<span class="covered" title="3 out of 3 forms covered">
+                050&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:verb-phrase&nbsp;[[:verb]
+                </span><br/>
+<span class="covered" title="3 out of 3 forms covered">
+                051&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:adverbs&nbsp;:verb]
+                </span><br/>
+<span class="covered" title="4 out of 4 forms covered">
+                052&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:verb&nbsp;:adverbs&nbsp;:verb]
+                </span><br/>
+<span class="covered" title="3 out of 3 forms covered">
+                053&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:verb&nbsp;:adverbs]
+                </span><br/>
+<span class="covered" title="5 out of 5 forms covered">
+                054&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:verb&nbsp;:adverbs&nbsp;:verb&nbsp;&quot;TO&quot;]]
+                </span><br/>
+<span class="covered" title="4 out of 4 forms covered">
+                055&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:locator&nbsp;[[&quot;IN&quot;&nbsp;:noun-phrases]]
+                </span><br/>
+<span class="covered" title="3 out of 3 forms covered">
+                056&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:locators&nbsp;[[:locator]
+                </span><br/>
+<span class="covered" title="3 out of 3 forms covered">
+                057&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:locator&nbsp;:locators]
+                </span><br/>
+<span class="covered" title="4 out of 4 forms covered">
+                058&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:locator&nbsp;&quot;,&quot;&nbsp;:locators]]
+                </span><br/>
+<span class="covered" title="3 out of 3 forms covered">
+                059&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:location&nbsp;[[:locators]]
+                </span><br/>
+<span class="covered" title="3 out of 3 forms covered">
+                060&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:subject&nbsp;[[:noun-phrases]]
+                </span><br/>
+<span class="covered" title="3 out of 3 forms covered">
+                061&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:object&nbsp;[[:noun-phrases]]
+                </span><br/>
+<span class="covered" title="5 out of 5 forms covered">
+                062&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:proposition&nbsp;[[:subject&nbsp;:verb-phrase&nbsp;:object]
+                </span><br/>
+<span class="covered" title="6 out of 6 forms covered">
+                063&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:location&nbsp;&quot;,&quot;&nbsp;:subject&nbsp;:verb-phrase&nbsp;:object]
+                </span><br/>
+<span class="covered" title="7 out of 7 forms covered">
+                064&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:subject&nbsp;&quot;,&quot;&nbsp;:location&nbsp;&quot;,&quot;&nbsp;:verb-phrase&nbsp;:object]
+                </span><br/>
+<span class="covered" title="5 out of 5 forms covered">
+                065&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:subject&nbsp;:verb-phrase&nbsp;:object&nbsp;:location]]
+                </span><br/>
+<span class="covered" title="3 out of 3 forms covered">
+                066&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:propositions&nbsp;[[:proposition]
+                </span><br/>
+<span class="covered" title="4 out of 4 forms covered">
+                067&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:proposition&nbsp;&quot;CC&quot;&nbsp;:propositions]
+                </span><br/>
+<span class="covered" title="5 out of 5 forms covered">
+                068&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:proposition&nbsp;&quot;,&quot;&nbsp;&quot;CC&quot;&nbsp;:propositions]]})
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                069&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="3 out of 3 forms covered">
+                070&nbsp;&nbsp;(declare&nbsp;reparse&nbsp;rdp-seek)
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                071&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                072&nbsp;&nbsp;(defn&nbsp;rdp-seek
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                073&nbsp;&nbsp;&nbsp;&nbsp;&quot;Seek&nbsp;a&nbsp;phrase&nbsp;which&nbsp;satisfies&nbsp;this&nbsp;`goal`&nbsp;(expected&nbsp;to&nbsp;be&nbsp;a&nbsp;keyword)&nbsp;in
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                074&nbsp;&nbsp;&nbsp;&nbsp;this&nbsp;`tagged-sentence`&nbsp;using&nbsp;this&nbsp;`grammar`.
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                075&nbsp;&nbsp;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                076&nbsp;&nbsp;&nbsp;&nbsp;Return&nbsp;a&nbsp;cons&nbsp;comprising
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                077&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;the&nbsp;first&nbsp;matching&nbsp;phrase&nbsp;for&nbsp;the&nbsp;goal,&nbsp;tagged&nbsp;with&nbsp;the&nbsp;goal,&nbsp;or&nbsp;`nil`&nbsp;if
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                078&nbsp;&nbsp;&nbsp;&nbsp;no&nbsp;match;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                079&nbsp;&nbsp;&nbsp;&nbsp;2.&nbsp;the&nbsp;tail&nbsp;of&nbsp;the&nbsp;sentence&nbsp;when&nbsp;the&nbsp;parts&nbsp;comprising&nbsp;the&nbsp;phrase&nbsp;are&nbsp;removed.&quot;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                080&nbsp;&nbsp;&nbsp;&nbsp;[tagged-sentence&nbsp;grammar&nbsp;goal]
+                </span><br/>
+<span class="covered" title="4 out of 4 forms covered">
+                081&nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;(keyword?&nbsp;goal)
+                </span><br/>
+<span class="covered" title="7 out of 7 forms covered">
+                082&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(when&nbsp;(not&nbsp;(empty?&nbsp;tagged-sentence))
+                </span><br/>
+<span class="covered" title="8 out of 8 forms covered">
+                083&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(when-let&nbsp;[result&nbsp;(first
+                </span><br/>
+<span class="covered" title="3 out of 3 forms covered">
+                084&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(sort
+                </span><br/>
+<span class="covered" title="8 out of 8 forms covered">
+                085&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#(&lt;&nbsp;(count&nbsp;%1)&nbsp;(count&nbsp;%2))
+                </span><br/>
+<span class="covered" title="2 out of 2 forms covered">
+                086&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(remove
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                087&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;empty?
+                </span><br/>
+<span class="covered" title="3 out of 3 forms covered">
+                088&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(map
+                </span><br/>
+<span class="covered" title="5 out of 5 forms covered">
+                089&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#(reparse&nbsp;tagged-sentence&nbsp;grammar&nbsp;%)
+                </span><br/>
+<span class="covered" title="3 out of 3 forms covered">
+                090&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(goal&nbsp;grammar)))))]
+                </span><br/>
+<span class="covered" title="13 out of 13 forms covered">
+                091&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(cons&nbsp;(cons&nbsp;(first&nbsp;result)&nbsp;(list&nbsp;goal))&nbsp;(rest&nbsp;result))))
+                </span><br/>
+<span class="not-covered" title="0 out of 16 forms covered">
+                092&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(throw&nbsp;(Exception.&nbsp;(str&nbsp;&quot;Non-keyword&nbsp;passed&nbsp;to&nbsp;rdp-seek:&nbsp;`&quot;&nbsp;goal&nbsp;&quot;`&nbsp;(type&nbsp;&quot;&nbsp;(or&nbsp;(type&nbsp;goal)&nbsp;&quot;nil&quot;)&nbsp;&quot;)&quot;)))))
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                093&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="19 out of 19 forms covered">
+                094&nbsp;&nbsp;(defmacro&nbsp;tag
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                095&nbsp;&nbsp;&nbsp;&nbsp;&quot;The&nbsp;tag,&nbsp;on&nbsp;a&nbsp;`tagged-token`,&nbsp;is&nbsp;just&nbsp;the&nbsp;second&nbsp;element.&nbsp;Written&nbsp;as&nbsp;a&nbsp;macro
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                096&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;readability.&quot;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                097&nbsp;&nbsp;&nbsp;&nbsp;[tagged-token]
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                098&nbsp;&nbsp;&nbsp;&nbsp;`(nth&nbsp;~tagged-token&nbsp;1))
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                099&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="44 out of 44 forms covered">
+                100&nbsp;&nbsp;(defmacro&nbsp;coll-or-nil?
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                101&nbsp;&nbsp;&nbsp;&nbsp;[o]
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                102&nbsp;&nbsp;&nbsp;&nbsp;&quot;For&nbsp;fuck&#x27;s&nbsp;sake,&nbsp;`nil`&nbsp;isn&#x27;t&nbsp;a&nbsp;collection?&nbsp;What&nbsp;planet&nbsp;are&nbsp;these&nbsp;people&nbsp;on?&quot;
+                </span><br/>
+<span class="covered" title="2 out of 2 forms covered">
+                103&nbsp;&nbsp;&nbsp;&nbsp;`(or&nbsp;(nil?&nbsp;~o)&nbsp;(coll?&nbsp;~o)))
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                104&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                105&nbsp;&nbsp;(defn&nbsp;rdp-extend
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                106&nbsp;&nbsp;&nbsp;&nbsp;&quot;Seek&nbsp;a&nbsp;phrase&nbsp;which&nbsp;satisfies&nbsp;this&nbsp;`goal`&nbsp;(expected&nbsp;to&nbsp;be&nbsp;a&nbsp;collection&nbsp;of&nbsp;tags)&nbsp;in
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                107&nbsp;&nbsp;&nbsp;&nbsp;this&nbsp;`tagged-sentence`&nbsp;using&nbsp;this&nbsp;`grammar`.
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                108&nbsp;&nbsp;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                109&nbsp;&nbsp;&nbsp;&nbsp;Return&nbsp;a&nbsp;cons&nbsp;comprising
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                110&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;the&nbsp;first&nbsp;matching&nbsp;phrase&nbsp;for&nbsp;the&nbsp;goal,&nbsp;or&nbsp;`nil`&nbsp;if&nbsp;no&nbsp;match;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                111&nbsp;&nbsp;&nbsp;&nbsp;2.&nbsp;the&nbsp;tail&nbsp;of&nbsp;the&nbsp;sentence&nbsp;when&nbsp;the&nbsp;parts&nbsp;comprising&nbsp;the&nbsp;phrase&nbsp;are&nbsp;removed.&quot;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                112&nbsp;&nbsp;&nbsp;&nbsp;[tagged-sentence&nbsp;grammar&nbsp;goal]
+                </span><br/>
+<span class="covered" title="4 out of 4 forms covered">
+                113&nbsp;&nbsp;&nbsp;&nbsp;(cond
+                </span><br/>
+<span class="covered" title="10 out of 10 forms covered">
+                114&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(not&nbsp;(coll-or-nil?&nbsp;goal))
+                </span><br/>
+<span class="not-covered" title="0 out of 16 forms covered">
+                115&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(throw&nbsp;(Exception.&nbsp;(str&nbsp;&quot;Non-collection&nbsp;passed&nbsp;to&nbsp;rdp-extend:&nbsp;`&quot;&nbsp;goal&nbsp;&quot;`&nbsp;(type&nbsp;&quot;&nbsp;(or&nbsp;(type&nbsp;goal)&nbsp;&quot;nil&quot;)&nbsp;&quot;)&quot;)))
+                </span><br/>
+<span class="covered" title="3 out of 3 forms covered">
+                116&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(empty?&nbsp;goal)
+                </span><br/>
+<span class="covered" title="5 out of 5 forms covered">
+                117&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(cons&nbsp;(list)&nbsp;tagged-sentence)
+                </span><br/>
+<span class="covered" title="5 out of 5 forms covered">
+                118&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(not&nbsp;(empty?&nbsp;tagged-sentence))
+                </span><br/>
+<span class="covered" title="2 out of 2 forms covered">
+                119&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(let&nbsp;[[tt&nbsp;&amp;&nbsp;st]&nbsp;tagged-sentence
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                120&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[target&nbsp;&amp;&nbsp;gt]&nbsp;goal]
+                </span><br/>
+<span class="covered" title="3 out of 3 forms covered">
+                121&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(cond
+                </span><br/>
+<span class="covered" title="3 out of 3 forms covered">
+                122&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(keyword?&nbsp;target)
+                </span><br/>
+<span class="covered" title="11 out of 11 forms covered">
+                123&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(when-let&nbsp;[[h&nbsp;&amp;&nbsp;t](reparse&nbsp;tagged-sentence&nbsp;grammar&nbsp;target)]
+                </span><br/>
+<span class="covered" title="11 out of 11 forms covered">
+                124&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(when-let&nbsp;[[dh&nbsp;&amp;&nbsp;dt]&nbsp;(reparse&nbsp;t&nbsp;grammar&nbsp;gt)]
+                </span><br/>
+<span class="covered" title="7 out of 7 forms covered">
+                125&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(cons&nbsp;(cons&nbsp;h&nbsp;dh)&nbsp;dt)))
+                </span><br/>
+<span class="covered" title="6 out of 6 forms covered">
+                126&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(=&nbsp;target&nbsp;(tag&nbsp;tt))
+                </span><br/>
+<span class="covered" title="11 out of 11 forms covered">
+                127&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(when-let&nbsp;[[dh&nbsp;&amp;&nbsp;dt]&nbsp;(reparse&nbsp;st&nbsp;grammar&nbsp;gt)]
+                </span><br/>
+<span class="covered" title="7 out of 7 forms covered">
+                128&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(cons&nbsp;(cons&nbsp;tt&nbsp;dh)&nbsp;dt))))))
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                129&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                130&nbsp;&nbsp;(defn&nbsp;reparse
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                131&nbsp;&nbsp;&nbsp;&nbsp;&quot;Reparse&nbsp;this&nbsp;`tagged-sentence`&nbsp;using&nbsp;this&nbsp;grammar&nbsp;to&nbsp;seek&nbsp;this&nbsp;`goal`.
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                132&nbsp;&nbsp;&nbsp;&nbsp;Parse&nbsp;greedily,&nbsp;seeking&nbsp;the&nbsp;most&nbsp;extended&nbsp;goal.
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                133&nbsp;&nbsp;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                134&nbsp;&nbsp;&nbsp;&nbsp;Return&nbsp;a&nbsp;sequence&nbsp;comprising
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                135&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;the&nbsp;first&nbsp;matching&nbsp;phrase&nbsp;for&nbsp;the&nbsp;goal,&nbsp;tagged&nbsp;with&nbsp;the&nbsp;goal,&nbsp;or&nbsp;`nil`
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                136&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;no&nbsp;match;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                137&nbsp;&nbsp;&nbsp;&nbsp;2.&nbsp;the&nbsp;tail&nbsp;of&nbsp;the&nbsp;sentence&nbsp;when&nbsp;the&nbsp;parts&nbsp;comprising&nbsp;the&nbsp;phrase&nbsp;are&nbsp;removed.
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                138&nbsp;&nbsp;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                139&nbsp;&nbsp;&nbsp;&nbsp;This&nbsp;function&nbsp;is&nbsp;called&nbsp;`reparse`&nbsp;because:
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                140&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;it&nbsp;is&nbsp;designed&nbsp;to&nbsp;parse&nbsp;sentences&nbsp;which&nbsp;have&nbsp;already&nbsp;been&nbsp;parsed&nbsp;by
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                141&nbsp;&nbsp;&nbsp;&nbsp;OpenNLP:&nbsp;it&nbsp;will&nbsp;not&nbsp;work&nbsp;on&nbsp;raw&nbsp;sentences;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                142&nbsp;&nbsp;&nbsp;&nbsp;2.&nbsp;it&nbsp;is&nbsp;a&nbsp;recursive&nbsp;descent&nbsp;parser.&quot;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                143&nbsp;&nbsp;&nbsp;&nbsp;[tagged-sentence&nbsp;grammar&nbsp;goal]
+                </span><br/>
+<span class="partial" title="13 out of 16 forms covered">
+                144&nbsp;&nbsp;&nbsp;&nbsp;(log&#x2F;debug&nbsp;&quot;=&gt;&nbsp;Choosing&nbsp;strategy&nbsp;for&nbsp;&quot;
+                </span><br/>
+<span class="not-covered" title="0 out of 19 forms covered">
+                145&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;goal&nbsp;&quot;&nbsp;in&nbsp;&quot;&nbsp;(with-out-str&nbsp;(pprint&nbsp;tagged-sentence)))
+                </span><br/>
+<span class="partial" title="3 out of 4 forms covered">
+                146&nbsp;&nbsp;&nbsp;&nbsp;(let&nbsp;[r&nbsp;(cond
+                </span><br/>
+<span class="covered" title="8 out of 8 forms covered">
+                147&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(keyword?&nbsp;goal)&nbsp;(rdp-seek&nbsp;tagged-sentence&nbsp;grammar&nbsp;goal)
+                </span><br/>
+<span class="covered" title="13 out of 13 forms covered">
+                148&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(coll-or-nil?&nbsp;goal)&nbsp;(rdp-extend&nbsp;tagged-sentence&nbsp;grammar&nbsp;goal))]
+                </span><br/>
+<span class="partial" title="13 out of 18 forms covered">
+                149&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(log&#x2F;debug&nbsp;&quot;&lt;=&nbsp;&quot;&nbsp;goal&nbsp;&quot;&nbsp;in&nbsp;&quot;
+                </span><br/>
+<span class="not-covered" title="0 out of 20 forms covered">
+                150&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(s&#x2F;trim&nbsp;(with-out-str&nbsp;(pprint&nbsp;tagged-sentence)))
+                </span><br/>
+<span class="not-covered" title="0 out of 20 forms covered">
+                151&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&nbsp;returned&nbsp;&quot;&nbsp;(s&#x2F;trim&nbsp;(with-out-str&nbsp;(pprint&nbsp;r))))
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                152&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r))
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                153&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                154&nbsp;&nbsp;(defn&nbsp;identify
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                155&nbsp;&nbsp;&nbsp;&nbsp;[parse-tree&nbsp;knowledge-accessor]
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                156&nbsp;&nbsp;&nbsp;&nbsp;;;&nbsp;TODO:&nbsp;we&nbsp;don&#x27;t&nbsp;yet&nbsp;have&nbsp;a&nbsp;working&nbsp;knowledge&nbsp;accessor.&nbsp;When&nbsp;we&nbsp;do,
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                157&nbsp;&nbsp;&nbsp;&nbsp;;;&nbsp;construct&nbsp;a&nbsp;query&nbsp;from&nbsp;the&nbsp;contents&nbsp;of&nbsp;this&nbsp;parse-tree,&nbsp;and&nbsp;pass&nbsp;it
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                158&nbsp;&nbsp;&nbsp;&nbsp;;;&nbsp;to&nbsp;the&nbsp;knowledge&nbsp;accessor&nbsp;in&nbsp;the&nbsp;hope&nbsp;of&nbsp;finding&nbsp;a&nbsp;true&nbsp;name.
+                </span><br/>
+<span class="not-covered" title="0 out of 1 forms covered">
+                159&nbsp;&nbsp;&nbsp;&nbsp;parse-tree)
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                160&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                161&nbsp;&nbsp;(defn&nbsp;normalise
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                162&nbsp;&nbsp;&nbsp;&nbsp;[parse-tree&nbsp;ka]
+                </span><br/>
+<span class="not-covered" title="0 out of 1 forms covered">
+                163&nbsp;&nbsp;&nbsp;&nbsp;(if
+                </span><br/>
+<span class="not-covered" title="0 out of 23 forms covered">
+                164&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(and&nbsp;(coll?&nbsp;parse-tree)&nbsp;(=&nbsp;(count&nbsp;parse-tree)&nbsp;2)(keyword?&nbsp;(nth&nbsp;parse-tree&nbsp;1)))
+                </span><br/>
+<span class="not-covered" title="0 out of 6 forms covered">
+                165&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(case&nbsp;(nth&nbsp;parse-tree&nbsp;1)
+                </span><br/>
+<span class="not-covered" title="0 out of 2 forms covered">
+                166&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:proposition&nbsp;(list
+                </span><br/>
+<span class="not-covered" title="0 out of 2 forms covered">
+                167&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(reduce
+                </span><br/>
+<span class="not-covered" title="0 out of 1 forms covered">
+                168&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;merge
+                </span><br/>
+<span class="not-covered" title="0 out of 1 forms covered">
+                169&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{}
+                </span><br/>
+<span class="not-covered" title="0 out of 3 forms covered">
+                170&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(map
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                171&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;;&nbsp;TODO:&nbsp;use&nbsp;combinatorics&nbsp;to&nbsp;extract&nbsp;all&nbsp;propositions&nbsp;from
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                172&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;;&nbsp;a&nbsp;proposition&nbsp;having&nbsp;multiple&nbsp;locations,&nbsp;multiple&nbsp;subject,
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                173&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;;&nbsp;objects&nbsp;and&#x2F;or&nbsp;verbs
+                </span><br/>
+<span class="not-covered" title="0 out of 13 forms covered">
+                174&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#(assoc&nbsp;{}&nbsp;(nth&nbsp;%&nbsp;1)&nbsp;(identify&nbsp;(first&nbsp;%)&nbsp;ka))
+                </span><br/>
+<span class="not-covered" title="0 out of 10 forms covered">
+                175&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(map&nbsp;#(normalise&nbsp;%&nbsp;ka)&nbsp;(first&nbsp;parse-tree)))))
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                176&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(:location&nbsp;:subject&nbsp;:object)
+                </span><br/>
+<span class="not-covered" title="0 out of 6 forms covered">
+                177&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(cons
+                </span><br/>
+<span class="not-covered" title="0 out of 6 forms covered">
+                178&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(reduce
+                </span><br/>
+<span class="not-covered" title="0 out of 3 forms covered">
+                179&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;concat
+                </span><br/>
+<span class="not-covered" title="0 out of 6 forms covered">
+                180&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(remove
+                </span><br/>
+<span class="not-covered" title="0 out of 3 forms covered">
+                181&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;empty?
+                </span><br/>
+<span class="not-covered" title="0 out of 30 forms covered">
+                182&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(map&nbsp;#(normalise&nbsp;%&nbsp;ka)&nbsp;(first&nbsp;parse-tree))))
+                </span><br/>
+<span class="not-covered" title="0 out of 18 forms covered">
+                183&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(list&nbsp;(nth&nbsp;parse-tree&nbsp;1)))
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                184&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(:propositions&nbsp;:locators&nbsp;:noun-phrases&nbsp;:verbs)
+                </span><br/>
+<span class="not-covered" title="0 out of 8 forms covered">
+                185&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(reduce
+                </span><br/>
+<span class="not-covered" title="0 out of 4 forms covered">
+                186&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;concat
+                </span><br/>
+<span class="not-covered" title="0 out of 8 forms covered">
+                187&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(remove
+                </span><br/>
+<span class="not-covered" title="0 out of 4 forms covered">
+                188&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;empty?
+                </span><br/>
+<span class="not-covered" title="0 out of 40 forms covered">
+                189&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(map&nbsp;#(normalise&nbsp;%&nbsp;ka)&nbsp;(first&nbsp;parse-tree))))
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                190&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;;&nbsp;else
+                </span><br/>
+<span class="not-covered" title="0 out of 1 forms covered">
+                191&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parse-tree)
+                </span><br/>
+<span class="not-covered" title="0 out of 1 forms covered">
+                192&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parse-tree))
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                193&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                194&nbsp;&nbsp;(defn&nbsp;propositions
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                195&nbsp;&nbsp;&nbsp;&nbsp;&quot;Given&nbsp;a&nbsp;`tagged-sentence`,&nbsp;return&nbsp;a&nbsp;list&nbsp;of&nbsp;propositions&nbsp;detected&nbsp;in&nbsp;that
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                196&nbsp;&nbsp;&nbsp;&nbsp;sentence;&nbsp;if&nbsp;`knowledge-accessor`&nbsp;is&nbsp;passed,&nbsp;try&nbsp;to&nbsp;resolve&nbsp;names&nbsp;and&nbsp;noun
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                197&nbsp;&nbsp;&nbsp;&nbsp;phrases&nbsp;to&nbsp;entities&nbsp;known&nbsp;to&nbsp;that&nbsp;knowledge&nbsp;accessor.
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                198&nbsp;&nbsp;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                199&nbsp;&nbsp;&nbsp;&nbsp;TODO:&nbsp;Note&nbsp;that&nbsp;if&nbsp;`:subject`,&nbsp;`:object`&nbsp;or&nbsp;`:locator`&nbsp;resolves&nbsp;to&nbsp;multiple
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                200&nbsp;&nbsp;&nbsp;&nbsp;objects,&nbsp;then&nbsp;that&nbsp;is&nbsp;essentially&nbsp;one&nbsp;proposition&nbsp;for&nbsp;each&nbsp;unique
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                201&nbsp;&nbsp;&nbsp;&nbsp;combination.&nbsp;This&nbsp;is&nbsp;not&nbsp;yet&nbsp;implemented!&quot;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                202&nbsp;&nbsp;&nbsp;&nbsp;([tagged-sentence]
+                </span><br/>
+<span class="not-covered" title="0 out of 4 forms covered">
+                203&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(propositions&nbsp;tagged-sentence&nbsp;nil))
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                204&nbsp;&nbsp;&nbsp;&nbsp;([tagged-sentence&nbsp;;;&nbsp;^wildwood.knowledge-accessor.Accessor
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                205&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;knowledge-accessor]
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                206&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;;&nbsp;TODO:&nbsp;doesn&#x27;t&nbsp;work&nbsp;yet.
+                </span><br/>
+<span class="not-covered" title="0 out of 2 forms covered">
+                207&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(reduce
+                </span><br/>
+<span class="not-covered" title="0 out of 1 forms covered">
+                208&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;concat
+                </span><br/>
+<span class="not-covered" title="0 out of 2 forms covered">
+                209&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(remove
+                </span><br/>
+<span class="not-covered" title="0 out of 1 forms covered">
+                210&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;empty?
+                </span><br/>
+<span class="not-covered" title="0 out of 3 forms covered">
+                211&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(map
+                </span><br/>
+<span class="not-covered" title="0 out of 4 forms covered">
+                212&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#(normalise&nbsp;%&nbsp;knowledge-accessor)
+                </span><br/>
+<span class="not-covered" title="0 out of 9 forms covered">
+                213&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(first&nbsp;(first&nbsp;(reparse&nbsp;tagged-sentence&nbsp;grammar&nbsp;:propositions))))))))
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                214&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                215&nbsp;&nbsp;(defn&nbsp;propositions-from-file
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                216&nbsp;&nbsp;&nbsp;&nbsp;[file-path]
+                </span><br/>
+<span class="not-covered" title="0 out of 2 forms covered">
+                217&nbsp;&nbsp;&nbsp;&nbsp;(reduce
+                </span><br/>
+<span class="not-covered" title="0 out of 1 forms covered">
+                218&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;concat
+                </span><br/>
+<span class="not-covered" title="0 out of 2 forms covered">
+                219&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(remove
+                </span><br/>
+<span class="not-covered" title="0 out of 1 forms covered">
+                220&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;empty?
+                </span><br/>
+<span class="not-covered" title="0 out of 3 forms covered">
+                221&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(map
+                </span><br/>
+<span class="not-covered" title="0 out of 7 forms covered">
+                222&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#(propositions&nbsp;(pos-tag&nbsp;(tokenize&nbsp;%)))
+                </span><br/>
+<span class="not-covered" title="0 out of 5 forms covered">
+                223&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(get-sentences&nbsp;(slurp&nbsp;file-path))))))
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                224&nbsp;&nbsp;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                225&nbsp;&nbsp;;;&nbsp;(reparse&nbsp;(pos-tag&nbsp;(tokenize&nbsp;&quot;True&nbsp;love&nbsp;is&nbsp;the&nbsp;daughter&nbsp;of&nbsp;temperance,&nbsp;and&nbsp;temperance&nbsp;is&nbsp;utterly&nbsp;opposed&nbsp;to&nbsp;the&nbsp;madness&nbsp;of&nbsp;bodily&nbsp;pleasure.&quot;))&nbsp;grammar&nbsp;:propositions)
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                226&nbsp;&nbsp;;;&nbsp;(reparse&nbsp;[[&quot;temperance&quot;&nbsp;&quot;NN&quot;]&nbsp;[&quot;is&quot;&nbsp;&quot;VBZ&quot;]&nbsp;[&quot;utterly&quot;&nbsp;&quot;RB&quot;]&nbsp;[&quot;opposed&quot;&nbsp;&quot;VBN&quot;]&nbsp;[&quot;to&quot;&nbsp;&quot;TO&quot;]&nbsp;[&quot;the&quot;&nbsp;&quot;DT&quot;]&nbsp;[&quot;madness&quot;&nbsp;&quot;NN&quot;]&nbsp;[&quot;of&quot;&nbsp;&quot;IN&quot;]&nbsp;[&quot;bodily&quot;&nbsp;&quot;JJ&quot;]&nbsp;[&quot;pleasure&quot;&nbsp;&quot;NN&quot;]]&nbsp;grammar&nbsp;:subject)
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                227&nbsp;&nbsp;;;&nbsp;(reparse&nbsp;[[&quot;is&quot;&nbsp;&quot;VBZ&quot;]&nbsp;[&quot;utterly&quot;&nbsp;&quot;RB&quot;]&nbsp;[&quot;opposed&quot;&nbsp;&quot;VBN&quot;]&nbsp;[&quot;to&quot;&nbsp;&quot;TO&quot;]&nbsp;[&quot;the&quot;&nbsp;&quot;DT&quot;]&nbsp;[&quot;madness&quot;&nbsp;&quot;NN&quot;]&nbsp;[&quot;of&quot;&nbsp;&quot;IN&quot;]&nbsp;[&quot;bodily&quot;&nbsp;&quot;JJ&quot;]&nbsp;[&quot;pleasure&quot;&nbsp;&quot;NN&quot;]]&nbsp;grammar&nbsp;:verb-phrase)
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                228&nbsp;&nbsp;;;&nbsp;(reparse&nbsp;[[&quot;is&quot;&nbsp;&quot;VBZ&quot;]&nbsp;[&quot;utterly&quot;&nbsp;&quot;RB&quot;]&nbsp;[&quot;opposed&quot;&nbsp;&quot;VBN&quot;]&nbsp;[&quot;to&quot;&nbsp;&quot;TO&quot;]&nbsp;[&quot;the&quot;&nbsp;&quot;DT&quot;]&nbsp;[&quot;madness&quot;&nbsp;&quot;NN&quot;]&nbsp;[&quot;of&quot;&nbsp;&quot;IN&quot;]&nbsp;[&quot;bodily&quot;&nbsp;&quot;JJ&quot;]&nbsp;[&quot;pleasure&quot;&nbsp;&quot;NN&quot;]]&nbsp;grammar&nbsp;:verb-phrase)
+                </span><br/>
+ </body>
+</html>
