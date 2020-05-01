@@ -1,6 +1,6 @@
-(ns wwui.propositions-test
+(ns wwui.parser-test
   (:require [clojure.test :refer :all]
-            [wwui.propositions :refer :all]
+            [wwui.parser :refer :all]
             [taoensso.timbre :as log :refer [set-level!]]))
 
 (log/set-level! :error)

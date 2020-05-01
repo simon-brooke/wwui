@@ -8,7 +8,7 @@ Download from http://example.com/FIXME.
 
 ## Usage
 
-**WARNING**: does not even nearly work yet, and may nver do so. The value of this archive is probably mainly as something to mine for algorithms and ideas, especially for those doing natural language interpreteation and generation.
+**WARNING**: does not even nearly work yet, and may never do so. The value of this archive is probably mainly as something to mine for algorithms and ideas, especially for those doing natural language interpreteation and generation.
 
 **WARNING**: nothing in this is stable. Nothing should be treated as an API. Feel free to steal ideas and code, but don't depend on `wwui` as a library.
 
