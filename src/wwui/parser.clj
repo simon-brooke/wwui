@@ -1,4 +1,4 @@
-(ns wwui.propositions
+(ns wwui.parser
   (:require [clojure.math.combinatorics :as combi]
             [clojure.pprint :refer [pprint]]
             [clojure.string :as s]
